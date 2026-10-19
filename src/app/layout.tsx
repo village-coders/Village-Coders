@@ -99,6 +99,9 @@ export const metadata: Metadata = {
     ],
     shortcut: '/favicon.jpg',
     apple: '/favicon.jpg',
+  },
+  verification: {
+    google: '3ZIgLUsJlhK5Pwqs5pN6tUd4WSvzB2PDq-MMo3i3GV0',
   }
 };
 
@@ -160,6 +163,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <head>
+        <meta name="google-site-verification" content="3ZIgLUsJlhK5Pwqs5pN6tUd4WSvzB2PDq-MMo3i3GV0" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
