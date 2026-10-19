@@ -95,11 +95,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/icon.png', type: 'image/png' },
-      { url: '/favicon.png', type: 'image/png' },
+      { url: '/favicon.jpg', type: 'image/jpeg' },
     ],
-    shortcut: '/icon.png',
-    apple: '/apple-icon.png',
+    shortcut: '/favicon.jpg',
+    apple: '/favicon.jpg',
   }
 };
 
