@@ -11,6 +11,7 @@ import { Testimonials } from '@/components/Testimonials';
 import { Faq } from '@/components/Faq';
 import { ContactSection } from '@/components/ContactSection';
 import { Footer } from '@/components/Footer';
+import { FloatingActionWidget } from '@/components/FloatingActionWidget';
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
         <ContactSection />
       </main>
       <Footer />
+      <FloatingActionWidget />
     </>
   );
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -16,6 +16,22 @@ interface TabConfig {
 
 export const Hero: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabKey>('nextjs');
+  const [wordIndex, setWordIndex] = useState(0);
+
+  const rotatingWords = [
+    { text: 'Digital Products', color: 'text-gradient-cyan' },
+    { text: 'Web Platforms', color: 'text-gradient-amber' },
+    { text: 'Enterprise SaaS', color: 'text-gradient-cyan' },
+    { text: 'Cloud Systems', color: 'text-gradient-amber' },
+    { text: 'Mobile Apps', color: 'text-gradient-cyan' }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % rotatingWords.length);
+    }, 2800);
+    return () => clearInterval(timer);
+  }, [rotatingWords.length]);
 
   const tabConfigs: Record<TabKey, TabConfig> = {
     nextjs: {
@@ -157,7 +173,22 @@ export const Hero: React.FC = () => {
             </div>
 
             <h1 className="hero-title">
-              Engineering High-Performance <span className="text-gradient-cyan">Digital Products</span> From The <span className="text-gradient-amber">Roots Up</span>.
+              Engineering High-Performance{' '}
+              <span className="rotating-text-wrapper">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={wordIndex}
+                    initial={{ y: 24, opacity: 0, filter: 'blur(4px)' }}
+                    animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
+                    exit={{ y: -24, opacity: 0, filter: 'blur(4px)' }}
+                    transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+                    className={`rotating-text-word ${rotatingWords[wordIndex].color}`}
+                  >
+                    {rotatingWords[wordIndex].text}
+                  </motion.span>
+                </AnimatePresence>
+              </span>{' '}
+              From The <span className="text-gradient-amber">Roots Up</span>.
             </h1>
 
             <p className="hero-subtitle">
