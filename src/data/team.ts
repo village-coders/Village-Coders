@@ -32,7 +32,7 @@ export const teamData: TeamMember[] = [
     specialty: 'Microservices, Event Streams & Database Optimization',
     experience: '8+ Years',
     bio: 'Building high-throughput transactional APIs, Kafka message brokers, and optimized database schemas.',
-    skills: ['Python', 'Node.js', 'PostgreSQL', 'Redis', 'Kafka', 'Docker'],
+    skills: ['Java / Spring Boot', 'Python', 'Node.js', 'PostgreSQL', 'Redis', 'Kafka'],
     github: 'https://github.com',
     linkedin: 'https://linkedin.com',
     avatarSeed: 'Awwal'

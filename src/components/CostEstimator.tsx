@@ -34,7 +34,7 @@ const platforms: PlatformOption[] = [
     name: 'Enterprise SaaS & API Engine',
     baseCost: 7500,
     baseWeeks: 6,
-    description: 'Multi-tenant architecture with high-concurrency microservices',
+    description: 'Multi-tenant Java (Spring Boot) / Go architecture with high-concurrency microservices',
     icon: '🏢'
   },
   {

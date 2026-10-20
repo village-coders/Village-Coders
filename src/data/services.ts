@@ -31,7 +31,7 @@ export const servicesData: ServiceItem[] = [
       'High-concurrency microservices',
       'SOC2 & enterprise security'
     ],
-    technologies: ['Go', 'Python', 'Node.js', 'PostgreSQL', 'Redis', 'Kafka'],
+    technologies: ['Java (Spring Boot)', 'Go', 'Python', 'Node.js', 'PostgreSQL', 'Redis', 'Kafka'],
     deliverables: ['API Suite & Docs', 'Database Schemas', 'Load Test Telemetry', 'Deployment Scripts'],
     timeframe: '6 - 12 weeks'
   },

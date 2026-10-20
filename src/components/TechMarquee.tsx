@@ -7,6 +7,7 @@ const technologies = [
   { name: 'Next.js 16 (App Router)', tag: 'Frontend & SSR', color: '#0284c7' },
   { name: 'TypeScript', tag: 'Type-Safe Core', color: '#0ea5e9' },
   { name: 'React 19', tag: 'UI Library', color: '#0369a1' },
+  { name: 'Java & Spring Boot', tag: 'Enterprise Backend', color: '#ea580c' },
   { name: 'Python & FastAPI', tag: 'AI & Backend', color: '#d97706' },
   { name: 'Node.js & Go', tag: 'High Concurrency', color: '#b45309' },
   { name: 'PostgreSQL', tag: 'Relational DB', color: '#15803d' },

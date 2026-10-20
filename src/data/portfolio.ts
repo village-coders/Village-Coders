@@ -13,7 +13,7 @@ export const portfolioData: ProjectCaseStudy[] = [
       { label: 'Uptime SLA', value: '99.99%' },
       { label: 'Active Merchants', value: '2,400+' }
     ],
-    technologies: ['Next.js', 'Go Microservices', 'PostgreSQL', 'Redis', 'Kafka', 'Docker'],
+    technologies: ['Java (Spring Boot)', 'Go Microservices', 'Next.js', 'PostgreSQL', 'Kafka', 'Docker'],
     client: 'PayCraft Global Ltd',
     year: '2025',
     deliverables: ['Web Checkout SDK', 'Merchant Portal', 'Admin Risk Console', 'Webhooks API'],
