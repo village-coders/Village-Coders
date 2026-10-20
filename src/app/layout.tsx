@@ -28,14 +28,13 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'The Village Coders | World-Class Web & Software Developers',
-    template: '%s | The Village Coders'
+    default: 'Village Coders | World-Class Web & Software Developers',
+    template: '%s | Village Coders'
   },
-  description: 'The Village Coders (thevillagecoders.com) is an elite IT engineering team and software studio. We design high-performance Next.js web platforms, enterprise software, cloud infrastructure, and mobile applications from the roots up.',
+  description: 'Village Coders (thevillagecoders.com) is an elite IT engineering team and software studio. We design high-performance Next.js web platforms, enterprise software, cloud infrastructure, and mobile applications from the roots up.',
   keywords: [
-    'The Village Coders',
-    'thevillagecoders.com',
     'Village Coders',
+    'thevillagecoders.com',
     'Village Coders Web & Software Developers',
     'Next.js 16 Expert Developers',
     'React 19 Software Engineers',
@@ -48,9 +47,9 @@ export const metadata: Metadata = {
     'High-Performance Web Applications',
     'Full-Stack Software Architecture'
   ],
-  authors: [{ name: 'The Village Coders Engineering Collective', url: siteUrl }],
-  creator: 'The Village Coders',
-  publisher: 'The Village Coders Ltd',
+  authors: [{ name: 'Village Coders Engineering Collective', url: siteUrl }],
+  creator: 'Village Coders',
+  publisher: 'Village Coders Ltd',
   formatDetection: {
     email: false,
     address: false,
@@ -63,21 +62,21 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: siteUrl,
-    title: 'The Village Coders | Elite Web & Software Developers',
+    title: 'Village Coders | Elite Web & Software Developers',
     description: 'Engineering high-performance digital products from the roots up. Specialized in Next.js, enterprise SaaS, cloud microservices, and mobile apps.',
-    siteName: 'The Village Coders',
+    siteName: 'Village Coders',
     images: [
       {
         url: `${siteUrl}/logo.png`,
         width: 1200,
         height: 630,
-        alt: 'The Village Coders - Web & Software Developers Logo'
+        alt: 'Village Coders - Web & Software Developers Logo'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'The Village Coders | Elite Web & Software Developers',
+    title: 'Village Coders | Elite Web & Software Developers',
     description: 'Engineering high-performance digital products from the roots up with Next.js, TypeScript, and modern cloud stacks.',
     images: [`${siteUrl}/logo.png`],
     creator: '@thevillagecoders'
@@ -123,7 +122,7 @@ export default function RootLayout({
       {
         '@type': 'ProfessionalService',
         '@id': `${siteUrl}/#organization`,
-        name: 'The Village Coders',
+        name: 'Village Coders',
         alternateName: 'Village Coders',
         url: siteUrl,
         logo: `${siteUrl}/logo.png`,
@@ -157,8 +156,8 @@ export default function RootLayout({
         '@type': 'WebSite',
         '@id': `${siteUrl}/#website`,
         url: siteUrl,
-        name: 'The Village Coders',
-        description: 'Official website of The Village Coders - Web & Software Developers (thevillagecoders.com)',
+        name: 'Village Coders',
+        description: 'Official website of Village Coders - Web & Software Developers (thevillagecoders.com)',
         publisher: {
           '@id': `${siteUrl}/#organization`
         }

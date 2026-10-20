@@ -22,11 +22,11 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   const current = dimensions[size] || dimensions.md;
 
   return (
-    <Link href="/" className="brand-logo-link" aria-label="The Village Coders - Web & Software Developers">
+    <Link href="/" className="brand-logo-link" aria-label="Village Coders - Web & Software Developers">
       <div className={`brand-logo-box size-${size}`}>
         <Image
           src="/logo.png"
-          alt="The Village Coders - Web & Software Developers Logo"
+          alt="Village Coders - Web & Software Developers Logo"
           width={current.width}
           height={current.height}
           priority

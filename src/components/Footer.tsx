@@ -29,7 +29,7 @@ export const Footer: React.FC = () => {
             </p>
             <div className="status-badge">
               <span className="pulse-dot"></span>
-              <span>The Village Coders Studio — Operating Globally</span>
+              <span>Village Coders Studio — Operating Globally</span>
             </div>
             <div className="footer-contact-direct">
               <a href="tel:+2349037118808" className="footer-contact-link">
@@ -100,7 +100,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="footer-bottom">
           <div className="copyright">
-            © 2026 The Village Coders (thevillagecoders.com). All rights reserved. Registered Web & Software Developers.
+            © 2026 Village Coders (thevillagecoders.com). All rights reserved. Registered Web & Software Developers.
           </div>
 
           <div className="bottom-links">

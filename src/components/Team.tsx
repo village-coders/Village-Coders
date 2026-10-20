@@ -13,7 +13,7 @@ export const Team: React.FC = () => {
             <span>Engineering Leadership</span>
           </div>
           <h2 className="section-title">
-            The Architects Behind <span className="text-gradient-amber">The Village Coders</span>
+            The Architects Behind <span className="text-gradient-amber">Village Coders</span>
           </h2>
           <p className="section-description">
             Direct collaboration with seasoned software architects and engineers. No account managers, no middlemen.
