@@ -94,15 +94,14 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: '48x48 32x32 16x16', type: 'image/x-icon' },
-      { url: '/icon-48.png', sizes: '48x48', type: 'image/png' },
-      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
-      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
-      { url: '/favicon.jpg', sizes: '512x512', type: 'image/jpeg' },
+      { url: '/favicon.ico?v=2', sizes: '48x48 32x32 16x16', type: 'image/x-icon' },
+      { url: '/icon-48.png?v=2', sizes: '48x48', type: 'image/png' },
+      { url: '/icon-192.png?v=2', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png?v=2', sizes: '512x512', type: 'image/png' },
     ],
-    shortcut: '/favicon.ico',
+    shortcut: '/favicon.ico?v=2',
     apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      { url: '/apple-touch-icon.png?v=2', sizes: '180x180', type: 'image/png' },
     ],
   },
   verification: {
@@ -169,11 +168,12 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <head>
         <meta name="google-site-verification" content="3ZIgLUsJlhK5Pwqs5pN6tUd4WSvzB2PDq-MMo3i3GV0" />
-        <link rel="icon" href="/favicon.ico" sizes="48x48 32x32 16x16" type="image/x-icon" />
-        <link rel="icon" href="/icon-48.png" sizes="48x48" type="image/png" />
-        <link rel="icon" href="/icon-192.png" sizes="192x192" type="image/png" />
-        <link rel="icon" href="/icon-512.png" sizes="512x512" type="image/png" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+        <link rel="shortcut icon" href="/favicon.ico?v=2" />
+        <link rel="icon" href="/favicon.ico?v=2" sizes="48x48 32x32 16x16" type="image/x-icon" />
+        <link rel="icon" href="/icon-48.png?v=2" sizes="48x48" type="image/png" />
+        <link rel="icon" href="/icon-192.png?v=2" sizes="192x192" type="image/png" />
+        <link rel="icon" href="/icon-512.png?v=2" sizes="512x512" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" sizes="180x180" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
