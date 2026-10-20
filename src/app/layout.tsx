@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     default: 'Village Coders | World-Class Web & Software Developers',
     template: '%s | Village Coders'
   },
-  description: 'Village Coders (thevillagecoders.com) is an elite IT engineering team and software studio. We design high-performance Next.js web platforms, enterprise software, cloud infrastructure, and mobile applications from the roots up.',
+  description: 'Village Coders is a premier software development studio. We architect and build custom web platforms, scalable SaaS products, mobile apps, and robust cloud systems.',
   keywords: [
     'Village Coders',
     'thevillagecoders.com',
@@ -40,12 +40,24 @@ export const metadata: Metadata = {
     'React 19 Software Engineers',
     'Enterprise SaaS Development',
     'Cross-Platform Mobile App Development',
+    'iOS and Android App Developers',
     'Cloud Architecture & DevOps CI/CD',
     'Custom Web Development Studio',
     'Full Stack IT Team',
     'African Tech Talent Global IT',
     'High-Performance Web Applications',
-    'Full-Stack Software Architecture'
+    'Full-Stack Software Architecture',
+    'Cybersecurity & Code Audits',
+    'Enterprise SaaS Development',
+    'Full Stack Web Applications',
+    'Cross-Platform Mobile App Development',
+    'iOS and Android App Developers',
+    'Cloud Architecture & DevOps CI/CD',
+    'High-Throughput APIs and Microservices',
+    'Full Stack IT Team',
+    'Cybersecurity & Code Audits',
+    'African Tech Talent Global IT',
+    'High-Performance Digital Products'
   ],
   authors: [{ name: 'Village Coders Engineering Collective', url: siteUrl }],
   creator: 'Village Coders',
@@ -62,8 +74,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: siteUrl,
-    title: 'Village Coders | Elite Web & Software Developers',
-    description: 'Engineering high-performance digital products from the roots up. Specialized in Next.js, enterprise SaaS, cloud microservices, and mobile apps.',
+    title: 'Village Coders | World-Class Web & Software Developers',
+    description: 'Engineering world-class web applications, scalable cloud backends, cross-platform mobile apps (iOS & Android), and secure enterprise software from the roots up.',
     siteName: 'Village Coders',
     images: [
       {
@@ -76,8 +88,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Village Coders | Elite Web & Software Developers',
-    description: 'Engineering high-performance digital products from the roots up with Next.js, TypeScript, and modern cloud stacks.',
+    title: 'Village Coders | World-Class Web & Software Developers',
+    description: 'Engineering world-class web applications, scalable cloud backends, cross-platform mobile apps (iOS & Android), and secure enterprise software from the roots up.',
     images: [`${siteUrl}/logo.png`],
     creator: '@thevillagecoders'
   },
@@ -126,7 +138,7 @@ export default function RootLayout({
         url: siteUrl,
         logo: `${siteUrl}/logo.png`,
         image: `${siteUrl}/logo.png`,
-        description: 'Elite IT collective and web & software development studio specializing in high-speed Next.js web applications, scalable backends, and mobile engineering.',
+        description: 'Elite software engineering studio and digital product collective specializing in custom web platforms, scalable cloud backends, cross-platform mobile apps, and enterprise software.',
         telephone: '+234-903-711-8808',
         email: 'hello@thevillagecoders.com',
         priceRange: '$$$',
@@ -141,13 +153,13 @@ export default function RootLayout({
           'https://linkedin.com/company/thevillagecoders'
         ],
         knowsAbout: [
-          'Web Development',
-          'Software Engineering',
-          'Next.js 16',
-          'React 19',
-          'Cloud Architecture',
-          'Mobile App Development',
-          'DevOps & CI/CD',
+          'Custom Software Development',
+          'Full-Stack Web Engineering',
+          'Enterprise SaaS Platforms',
+          'Mobile App Development (iOS & Android)',
+          'Cloud Architecture & DevOps',
+          'High-Throughput APIs & Microservices',
+          'System Architecture',
           'Cybersecurity Audits'
         ]
       },
@@ -156,7 +168,7 @@ export default function RootLayout({
         '@id': `${siteUrl}/#website`,
         url: siteUrl,
         name: 'Village Coders',
-        description: 'Official website of Village Coders - Web & Software Developers (thevillagecoders.com)',
+        description: 'Official website of Village Coders - World-Class Web & Software Development Studio (thevillagecoders.com)',
         publisher: {
           '@id': `${siteUrl}/#organization`
         }

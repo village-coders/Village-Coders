@@ -59,7 +59,7 @@ export const Footer: React.FC = () => {
           <div className="footer-column">
             <h4 className="footer-title">Engineering</h4>
             <ul className="footer-links">
-              <li><Link href="#services">Next.js 16 Web Apps</Link></li>
+              <li><Link href="#services">Custom Web Platforms</Link></li>
               <li><Link href="#services">Enterprise SaaS & APIs</Link></li>
               <li><Link href="#services">React Native & Mobile</Link></li>
               <li><Link href="#services">Cloud DevOps & Terraform</Link></li>
@@ -72,7 +72,7 @@ export const Footer: React.FC = () => {
           <div className="footer-column newsletter-col">
             <h4 className="footer-title">Engineering Dispatch</h4>
             <p className="newsletter-desc">
-              Subscribe to our monthly architectural digest covering Next.js, high-throughput microservices, and web performance.
+              Subscribe to our monthly architectural digest covering full-stack engineering, cloud systems, and web performance.
             </p>
 
             {subscribed ? (

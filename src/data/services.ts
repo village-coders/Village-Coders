@@ -7,14 +7,14 @@ export const servicesData: ServiceItem[] = [
     subtitle: 'Lightning-fast, high-converting platforms',
     icon: 'code',
     accentColor: '#0284c7', // Brand Cyan
-    description: 'Next.js 16 App Router, React 19, and serverless edge architectures engineered for sub-second page loads.',
+    description: 'Modern full-stack web platforms, custom SaaS architectures, and cloud-native applications engineered for sub-second load times and high conversion.',
     features: [
-      'Next.js 16 & Server Components',
-      'Headless CMS & micro-frontends',
-      'Core Web Vitals 99+ score',
-      'Automated CI/CD pipeline'
+      'Full-Stack Web & SaaS Platforms',
+      'Headless CMS & Micro-Frontends',
+      'Sub-second Load Times & 99+ Core Web Vitals',
+      'Automated CI/CD & Cloud Deployment'
     ],
-    technologies: ['Next.js 16', 'React 19', 'TypeScript', 'Node.js', 'GraphQL'],
+    technologies: ['React & Next.js', 'TypeScript', 'Node.js', 'GraphQL / REST', 'Tailwind CSS'],
     deliverables: ['Production Web App', 'Design System Library', 'Automated CI/CD Pipeline', 'Full Source Code'],
     timeframe: '3 - 8 weeks'
   },

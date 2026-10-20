@@ -23,10 +23,10 @@ interface FeatureOption {
 const platforms: PlatformOption[] = [
   {
     id: 'nextjs-web',
-    name: 'Next.js 16 Web Application',
+    name: 'Custom Web & SaaS Platform',
     baseCost: 3500,
     baseWeeks: 3,
-    description: 'Blazing fast, SEO-optimized SSR web platform with modern UI/UX',
+    description: 'High-speed, SEO-optimized web application with modern UI/UX and full-stack capabilities',
     icon: '🌐'
   },
   {

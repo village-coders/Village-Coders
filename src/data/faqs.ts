@@ -8,8 +8,8 @@ export const faqsData: FaqItem[] = [
   },
   {
     category: 'Technical Stack',
-    question: 'Why do you prioritize Next.js, React 19, and modern TypeScript?',
-    answer: 'Next.js 16 and React 19 deliver top-tier Core Web Vitals and Google SEO rankings. TypeScript eliminates runtime bugs and guarantees scalable architecture.'
+    question: 'What technologies and frameworks does your engineering team build with?',
+    answer: 'We architect full-stack solutions tailored to your scale: custom web platforms (React, Next.js, TypeScript), high-throughput backend microservices (Go, Python, Node.js), native & cross-platform mobile apps (React Native, Flutter), and resilient cloud infrastructure (AWS, Docker, Kubernetes).'
   },
   {
     category: 'IP & Ownership',
