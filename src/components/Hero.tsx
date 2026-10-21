@@ -223,7 +223,7 @@ export const Hero: React.FC = () => {
               </div>
               <div className="metric-divider"></div>
               <div className="metric-item">
-                <div className="metric-value text-gradient-amber">120+</div>
+                <div className="metric-value text-gradient-amber">10+</div>
                 <div className="metric-label">Shipped Deployments</div>
               </div>
               <div className="metric-divider"></div>

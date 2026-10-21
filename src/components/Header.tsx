@@ -22,7 +22,11 @@ export const Header: React.FC = () => {
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container header-container">
-        <BrandLogo size="md" />
+        <div className="header-logo-slot">
+          <div className="header-logo-absolute">
+            <BrandLogo size="xl" />
+          </div>
+        </div>
 
         {/* Desktop Navigation */}
         <nav className="desktop-nav" aria-label="Main Navigation">
@@ -169,10 +173,40 @@ export const Header: React.FC = () => {
         }
 
         .header-container {
+          position: relative;
           display: flex;
           align-items: center;
           justify-content: space-between;
           gap: 24px;
+          height: 100%;
+        }
+
+        .header-logo-slot {
+          position: relative;
+          width: 142px;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
+        }
+
+        .header-logo-absolute {
+          position: absolute;
+          top: 8px;
+          left: 0;
+          z-index: 120;
+          pointer-events: auto;
+          filter: drop-shadow(0 6px 16px rgba(15, 23, 42, 0.08));
+          transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease, top 0.25s ease;
+        }
+
+        .header-logo-absolute:hover {
+          transform: translateY(-2px) scale(1.02);
+          filter: drop-shadow(0 12px 24px rgba(2, 132, 199, 0.16));
+        }
+
+        .header.scrolled .header-logo-absolute {
+          top: 6px;
         }
 
         .desktop-nav {
@@ -387,6 +421,21 @@ export const Header: React.FC = () => {
           }
           :global(.hamburger-btn) {
             display: flex;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .header-logo-slot {
+            width: 112px;
+          }
+          .header-logo-absolute {
+            transform-origin: left top;
+            transform: scale(0.85);
+            top: 10px;
+          }
+          .nav-cta {
+            padding: 8px 14px;
+            font-size: 0.8rem;
           }
         }
       `}</style>
