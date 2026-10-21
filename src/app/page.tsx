@@ -4,7 +4,6 @@ import { Hero } from '@/components/Hero';
 import { TechMarquee } from '@/components/TechMarquee';
 import { Services } from '@/components/Services';
 import { Portfolio } from '@/components/Portfolio';
-import { Process } from '@/components/Process';
 import { Testimonials } from '@/components/Testimonials';
 import { Faq } from '@/components/Faq';
 import { ContactSection } from '@/components/ContactSection';
@@ -20,7 +19,6 @@ export default function Home() {
         <TechMarquee />
         <Services />
         <Portfolio />
-        <Process />
         <Testimonials />
         <Faq />
         <ContactSection />

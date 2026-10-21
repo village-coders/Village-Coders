@@ -32,7 +32,6 @@ export const Header: React.FC = () => {
         <nav className="desktop-nav" aria-label="Main Navigation">
           <Link href="#services" className="nav-link">Services</Link>
           <Link href="#portfolio" className="nav-link">Work</Link>
-          <Link href="#process" className="nav-link">Process</Link>
           <Link href="#faq" className="nav-link">FAQ</Link>
           <Link href="#contact" className="nav-link">Contact</Link>
         </nav>
@@ -116,9 +115,8 @@ export const Header: React.FC = () => {
                   {[
                     { href: '#services', num: '01', label: 'Our Services' },
                     { href: '#portfolio', num: '02', label: 'Case Studies & Work' },
-                    { href: '#process', num: '03', label: 'Engineering Process' },
-                    { href: '#faq', num: '04', label: 'FAQ' },
-                    { href: '#contact', num: '05', label: 'Get In Touch' }
+                    { href: '#faq', num: '03', label: 'FAQ' },
+                    { href: '#contact', num: '04', label: 'Get In Touch' }
                   ].map((item, idx) => (
                     <motion.div
                       key={idx}
@@ -192,16 +190,17 @@ export const Header: React.FC = () => {
         }
 
         .header.scrolled .header-logo-slot {
-          width: 102px;
+          width: 93px;
         }
 
         .header-logo-absolute {
           position: absolute;
-          top: 8px;
+          top: 6px;
           left: 0;
           z-index: 120;
           pointer-events: auto;
           transform-origin: left center;
+          transform: translateY(0) scale(1);
           filter: drop-shadow(0 6px 16px rgba(15, 23, 42, 0.08));
           transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
                       top 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
@@ -214,13 +213,13 @@ export const Header: React.FC = () => {
         }
 
         .header.scrolled .header-logo-absolute {
-          top: 13px;
-          transform: scale(0.65);
+          top: 50%;
+          transform: translateY(-50%) scale(0.65);
           filter: drop-shadow(0 2px 6px rgba(15, 23, 42, 0.06));
         }
 
         .header.scrolled .header-logo-absolute:hover {
-          transform: scale(0.67) translateY(-1px);
+          transform: translateY(-50%) scale(0.67);
           filter: drop-shadow(0 4px 10px rgba(2, 132, 199, 0.14));
         }
 
