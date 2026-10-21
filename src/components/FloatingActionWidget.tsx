@@ -80,15 +80,6 @@ export const FloatingActionWidget: React.FC = () => {
                     </a>
 
                     <a
-                      href="#estimator"
-                      className="popover-btn estimator-btn"
-                      onClick={() => setExpanded(false)}
-                    >
-                      <span className="btn-icon">⚡</span>
-                      <span>Calculate Scope & Cost</span>
-                    </a>
-
-                    <a
                       href="#contact"
                       className="popover-btn email-btn"
                       onClick={() => setExpanded(false)}

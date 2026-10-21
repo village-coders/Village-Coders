@@ -28,9 +28,7 @@ export const Header: React.FC = () => {
         <nav className="desktop-nav" aria-label="Main Navigation">
           <Link href="#services" className="nav-link">Services</Link>
           <Link href="#portfolio" className="nav-link">Work</Link>
-          <Link href="#estimator" className="nav-link">Cost Calculator</Link>
           <Link href="#process" className="nav-link">Process</Link>
-          <Link href="#team" className="nav-link">Team</Link>
           <Link href="#faq" className="nav-link">FAQ</Link>
           <Link href="#contact" className="nav-link">Contact</Link>
         </nav>
@@ -114,11 +112,9 @@ export const Header: React.FC = () => {
                   {[
                     { href: '#services', num: '01', label: 'Our Services' },
                     { href: '#portfolio', num: '02', label: 'Case Studies & Work' },
-                    { href: '#estimator', num: '03', label: 'Project Cost Calculator' },
-                    { href: '#process', num: '04', label: 'Engineering Process' },
-                    { href: '#team', num: '05', label: 'Team & Architects' },
-                    { href: '#faq', num: '06', label: 'FAQ' },
-                    { href: '#contact', num: '07', label: 'Get In Touch' }
+                    { href: '#process', num: '03', label: 'Engineering Process' },
+                    { href: '#faq', num: '04', label: 'FAQ' },
+                    { href: '#contact', num: '05', label: 'Get In Touch' }
                   ].map((item, idx) => (
                     <motion.div
                       key={idx}

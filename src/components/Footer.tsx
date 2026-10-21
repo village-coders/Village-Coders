@@ -47,11 +47,10 @@ export const Footer: React.FC = () => {
             <ul className="footer-links">
               <li><Link href="#services">Specialized Services</Link></li>
               <li><Link href="#portfolio">Featured Case Studies</Link></li>
-              <li><Link href="#estimator">Cost & Scope Calculator</Link></li>
               <li><Link href="#process">Engineering Lifecycle</Link></li>
-              <li><Link href="#team">Architects & Team</Link></li>
               <li><Link href="#testimonials">Client Endorsements</Link></li>
               <li><Link href="#faq">Technical FAQ</Link></li>
+              <li><Link href="#contact">Start a Project</Link></li>
             </ul>
           </div>
 

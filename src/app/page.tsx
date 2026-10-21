@@ -4,9 +4,7 @@ import { Hero } from '@/components/Hero';
 import { TechMarquee } from '@/components/TechMarquee';
 import { Services } from '@/components/Services';
 import { Portfolio } from '@/components/Portfolio';
-import { CostEstimator } from '@/components/CostEstimator';
 import { Process } from '@/components/Process';
-import { Team } from '@/components/Team';
 import { Testimonials } from '@/components/Testimonials';
 import { Faq } from '@/components/Faq';
 import { ContactSection } from '@/components/ContactSection';
@@ -22,9 +20,7 @@ export default function Home() {
         <TechMarquee />
         <Services />
         <Portfolio />
-        <CostEstimator />
         <Process />
-        <Team />
         <Testimonials />
         <Faq />
         <ContactSection />
