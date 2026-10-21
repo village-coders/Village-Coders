@@ -23,7 +23,7 @@ export const Footer: React.FC = () => {
         <div className="footer-grid">
           {/* Brand Info */}
           <div className="footer-brand">
-            <BrandLogo size="md" />
+            <BrandLogo size="2xl" />
             <p className="footer-mission">
               High-performance web applications, distributed cloud backends, and mobile systems for ambitious companies worldwide.
             </p>

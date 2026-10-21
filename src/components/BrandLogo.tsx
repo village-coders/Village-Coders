@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface BrandLogoProps {
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
   showTagline?: boolean;
 }
 
@@ -17,7 +17,8 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
     sm: { width: 68, height: 44 },
     md: { width: 92, height: 58 },
     lg: { width: 118, height: 75 },
-    xl: { width: 142, height: 91 }
+    xl: { width: 142, height: 91 },
+    '2xl': { width: 168, height: 107 }
   };
 
   const current = dimensions[size] || dimensions.md;

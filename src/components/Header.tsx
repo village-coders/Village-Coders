@@ -188,6 +188,11 @@ export const Header: React.FC = () => {
           display: flex;
           align-items: center;
           flex-shrink: 0;
+          transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .header.scrolled .header-logo-slot {
+          width: 102px;
         }
 
         .header-logo-absolute {
@@ -196,8 +201,11 @@ export const Header: React.FC = () => {
           left: 0;
           z-index: 120;
           pointer-events: auto;
+          transform-origin: left center;
           filter: drop-shadow(0 6px 16px rgba(15, 23, 42, 0.08));
-          transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease, top 0.25s ease;
+          transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                      top 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                      filter 0.3s ease;
         }
 
         .header-logo-absolute:hover {
@@ -206,7 +214,14 @@ export const Header: React.FC = () => {
         }
 
         .header.scrolled .header-logo-absolute {
-          top: 6px;
+          top: 13px;
+          transform: scale(0.65);
+          filter: drop-shadow(0 2px 6px rgba(15, 23, 42, 0.06));
+        }
+
+        .header.scrolled .header-logo-absolute:hover {
+          transform: scale(0.67) translateY(-1px);
+          filter: drop-shadow(0 4px 10px rgba(2, 132, 199, 0.14));
         }
 
         .desktop-nav {
