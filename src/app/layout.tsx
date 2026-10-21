@@ -130,7 +130,7 @@ export default function RootLayout({
         image: `${siteUrl}/logo.png`,
         description: 'Elite software engineering studio and digital product collective specializing in custom web platforms, scalable cloud backends, cross-platform mobile apps, and enterprise software.',
         telephone: '+234-903-711-8808',
-        email: 'hello@thevillagecoders.com',
+        email: 'villagecoders7@gmail.com',
         priceRange: '$$$',
         address: {
           '@type': 'PostalAddress',
