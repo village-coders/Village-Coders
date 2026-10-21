@@ -16,20 +16,11 @@ export const ContactSection: React.FC = () => {
   const [isPending, startTransition] = useTransition();
 
   const [selectedService, setSelectedService] = useState<string>('web-development');
-  const [selectedBudget, setSelectedBudget] = useState<string>('$5,000 - $15,000');
-
-  const budgetTiers = [
-    '< $5,000 (MVP)',
-    '$5,000 - $15,000 (Standard Platform)',
-    '$15,000 - $35,000 (Enterprise SaaS)',
-    '$35,000+ (Dedicated Squad Retainer)'
-  ];
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     formData.set('service', selectedService);
-    formData.set('budget', selectedBudget);
 
     startTransition(async () => {
       try {
@@ -249,28 +240,22 @@ export const ContactSection: React.FC = () => {
                     </select>
                   </div>
 
-                  {/* Budget Range */}
+                  {/* Target Investment / Budget Number Input */}
                   <div className="form-group">
-                    <label className="form-label">Target Investment Range</label>
-                    <div className="budget-radios">
-                      {budgetTiers.map((tier, idx) => (
-                        <motion.label 
-                          key={idx} 
-                          className={`budget-pill ${selectedBudget === tier ? 'active' : ''}`}
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                          transition={{ duration: 0.15 }}
-                        >
-                          <input
-                            type="radio"
-                            name="budget"
-                            value={tier}
-                            checked={selectedBudget === tier}
-                            onChange={() => setSelectedBudget(tier)}
-                          />
-                          <span>{tier}</span>
-                        </motion.label>
-                      ))}
+                    <label htmlFor="budget" className="form-label">
+                      Target Investment / Budget (USD)
+                    </label>
+                    <div className="budget-input-wrapper">
+                      <span className="currency-prefix">$</span>
+                      <input
+                        type="number"
+                        id="budget"
+                        name="budget"
+                        min="0"
+                        step="500"
+                        placeholder="e.g. 10000"
+                        className="form-input budget-number-input"
+                      />
                     </div>
                   </div>
 
@@ -535,35 +520,26 @@ export const ContactSection: React.FC = () => {
           font-size: 0.88rem;
         }
 
-        .budget-radios {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 8px;
-        }
-
-        :global(.budget-pill) {
+        .budget-input-wrapper {
+          position: relative;
           display: flex;
           align-items: center;
-          gap: 8px;
-          padding: 10px 12px;
-          background: #f8fafc;
-          border: 1px solid var(--border-subtle);
-          border-radius: var(--radius-sm);
-          cursor: pointer;
-          font-size: 0.8rem;
-          color: var(--text-secondary);
-          transition: all 0.2s ease;
+          width: 100%;
         }
 
-        :global(.budget-pill input) {
-          display: none;
-        }
-
-        :global(.budget-pill.active) {
-          background: rgba(2, 132, 199, 0.08);
-          border-color: var(--brand-cyan);
-          color: var(--brand-cyan);
+        .currency-prefix {
+          position: absolute;
+          left: 14px;
           font-weight: 700;
+          font-size: 1rem;
+          color: var(--text-muted);
+          pointer-events: none;
+          user-select: none;
+          z-index: 2;
+        }
+
+        .budget-number-input {
+          padding-left: 32px !important;
         }
 
         :global(.submit-btn) {
