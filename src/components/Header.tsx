@@ -181,7 +181,7 @@ export const Header: React.FC = () => {
 
         .header-logo-slot {
           position: relative;
-          width: 142px;
+          width: 154px;
           height: 100%;
           display: flex;
           align-items: center;
@@ -190,7 +190,7 @@ export const Header: React.FC = () => {
         }
 
         .header.scrolled .header-logo-slot {
-          width: 93px;
+          width: 122px;
         }
 
         .header-logo-absolute {
@@ -214,12 +214,12 @@ export const Header: React.FC = () => {
 
         .header.scrolled .header-logo-absolute {
           top: 50%;
-          transform: translateY(-50%) scale(0.65);
+          transform: translateY(-50%) scale(0.78);
           filter: drop-shadow(0 2px 6px rgba(15, 23, 42, 0.06));
         }
 
         .header.scrolled .header-logo-absolute:hover {
-          transform: translateY(-50%) scale(0.67);
+          transform: translateY(-50%) scale(0.80);
           filter: drop-shadow(0 4px 10px rgba(2, 132, 199, 0.14));
         }
 

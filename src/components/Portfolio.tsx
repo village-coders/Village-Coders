@@ -7,14 +7,7 @@ import { portfolioData } from '@/data/portfolio';
 import { ProjectCaseStudy } from '@/types';
 
 export const Portfolio: React.FC = () => {
-  const [filter, setFilter] = useState<string>('All');
   const [selectedCase, setSelectedCase] = useState<ProjectCaseStudy | null>(null);
-
-  const categories = ['All', 'FinTech', 'Enterprise SaaS', 'Web App', 'Mobile', 'Cloud/DevOps'];
-
-  const filteredProjects = filter === 'All'
-    ? portfolioData
-    : portfolioData.filter((item) => item.category === filter);
 
   return (
     <section id="portfolio" className="section portfolio-section">
@@ -31,34 +24,10 @@ export const Portfolio: React.FC = () => {
           </p>
         </div>
 
-        {/* Filter Pills with Animated Gliding Background */}
-        <div className="filter-bar">
-          {categories.map((cat) => {
-            const isActive = filter === cat;
-            return (
-              <button
-                key={cat}
-                type="button"
-                className={`filter-btn ${isActive ? 'active' : ''}`}
-                onClick={() => setFilter(cat)}
-              >
-                {isActive && (
-                  <motion.span
-                    layoutId="portfolioFilterPill"
-                    className="filter-pill-bg"
-                    transition={{ type: 'spring', stiffness: 500, damping: 38 }}
-                  />
-                )}
-                <span className="filter-text">{cat}</span>
-              </button>
-            );
-          })}
-        </div>
-
         {/* Portfolio Grid with Spring Layout Transitions */}
         <div className="portfolio-grid">
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
+            {portfolioData.map((project) => (
               <motion.div
                 layout
                 key={project.id}
@@ -77,16 +46,6 @@ export const Portfolio: React.FC = () => {
 
                   <h3 className="project-title">{project.title}</h3>
                   <p className="project-summary">{project.summary}</p>
-
-                  {/* Metrics Grid */}
-                  <div className="metrics-showcase">
-                    {project.metrics.map((m, mIdx) => (
-                      <div key={mIdx} className="metric-box">
-                        <div className="m-val text-gradient-cyan">{m.value}</div>
-                        <div className="m-label">{m.label}</div>
-                      </div>
-                    ))}
-                  </div>
 
                   {/* Technologies */}
                   <div className="project-tech-list">
@@ -143,14 +102,6 @@ export const Portfolio: React.FC = () => {
               </div>
 
             <div className="modal-body">
-              <div className="case-metrics-banner">
-                {selectedCase.metrics.map((m, idx) => (
-                  <div key={idx} className="banner-item">
-                    <div className="banner-val text-gradient-cyan">{m.value}</div>
-                    <div className="banner-label">{m.label}</div>
-                  </div>
-                ))}
-              </div>
 
               <div className="case-text-block">
                 <h4>System Architecture & Challenge:</h4>

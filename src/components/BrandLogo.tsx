@@ -17,8 +17,8 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
     sm: { width: 68, height: 44 },
     md: { width: 92, height: 58 },
     lg: { width: 118, height: 75 },
-    xl: { width: 142, height: 91 },
-    '2xl': { width: 168, height: 107 }
+    xl: { width: 154, height: 98 },
+    '2xl': { width: 172, height: 110 }
   };
 
   const current = dimensions[size] || dimensions.md;
