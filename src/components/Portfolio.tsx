@@ -24,20 +24,18 @@ export const Portfolio: React.FC = () => {
           </p>
         </div>
 
-        {/* Portfolio Grid with Spring Layout Transitions */}
+        {/* Portfolio Grid */}
         <div className="portfolio-grid">
-          <AnimatePresence mode="popLayout">
-            {portfolioData.map((project) => (
-              <motion.div
-                layout
-                key={project.id}
-                initial={{ opacity: 0, scale: 0.94 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.94 }}
-                transition={{ duration: 0.28, ease: 'easeOut' }}
-                whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="project-card-outer"
-              >
+          {portfolioData.map((project) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-30px' }}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
+              whileHover={{ y: -6, transition: { duration: 0.2 } }}
+              className="project-card-outer"
+            >
                 <div className="project-card glass-card">
                   <div className="project-header">
                     <span className="project-category">{project.category}</span>
@@ -60,17 +58,32 @@ export const Portfolio: React.FC = () => {
                       className="btn-case-study"
                       onClick={() => setSelectedCase(project)}
                     >
-                      <span>Read Full Case Study</span>
+                      <span>Read Case Study</span>
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12 5 19 12 12 19"></polyline>
                       </svg>
                     </button>
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-live-preview"
+                        title={`Visit live site: ${project.title}`}
+                      >
+                        <span>Live Site</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                          <polyline points="15 3 21 3 21 9"></polyline>
+                          <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                      </a>
+                    )}
                   </div>
                 </div>
               </motion.div>
             ))}
-          </AnimatePresence>
         </div>
       </div>
 
@@ -130,13 +143,30 @@ export const Portfolio: React.FC = () => {
             </div>
 
             <div className="modal-footer">
-              <Link
-                href="#contact"
-                className="btn btn-primary"
-                onClick={() => setSelectedCase(null)}
-              >
-                Discuss a Similar Project With Us
-              </Link>
+              <div className="modal-footer-actions">
+                {selectedCase.liveUrl && (
+                  <a
+                    href={selectedCase.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-modal-live"
+                  >
+                    <span>Visit Live Website</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                )}
+                <Link
+                  href="#contact"
+                  className="btn btn-primary"
+                  onClick={() => setSelectedCase(null)}
+                >
+                  Discuss a Similar Project With Us
+                </Link>
+              </div>
             </div>
           </motion.div>
         </motion.div>
@@ -146,68 +176,29 @@ export const Portfolio: React.FC = () => {
       <style jsx>{`
         .portfolio-section {
           background: #f8fafc;
-        }
-
-        .filter-bar {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-          gap: 10px;
-          margin-top: 40px;
-          margin-bottom: 48px;
-        }
-
-        .filter-btn {
           position: relative;
-          padding: 8px 18px;
-          font-size: 0.86rem;
-          font-weight: 600;
-          color: var(--text-secondary);
-          background: #ffffff;
-          border: 1px solid var(--border-subtle);
-          border-radius: var(--radius-full);
-          cursor: pointer;
-          transition: color 0.2s ease, border-color 0.2s ease;
-          z-index: 1;
-        }
-
-        .filter-btn:hover {
-          color: var(--text-primary);
-          border-color: #cbd5e1;
-        }
-
-        .filter-btn.active {
-          color: #ffffff;
-          border-color: transparent;
-        }
-
-        :global(.filter-pill-bg) {
-          position: absolute;
-          inset: 0;
-          background: var(--brand-cyan);
-          border-radius: var(--radius-full);
-          box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
-          z-index: -1;
-        }
-
-        .filter-text {
-          position: relative;
-          z-index: 2;
+          width: 100%;
+          clear: both;
         }
 
         :global(.portfolio-grid),
         .portfolio-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 24px;
+          gap: 28px;
           width: 100%;
+          margin-top: 52px;
+          margin-bottom: 24px;
+          position: relative;
         }
 
-        :global(.project-card-outer) {
+        :global(.project-card-outer),
+        .project-card-outer {
           display: flex;
           flex-direction: column;
           height: 100%;
+          width: 100%;
+          min-width: 0;
         }
 
         .project-card {
@@ -215,11 +206,13 @@ export const Portfolio: React.FC = () => {
           display: flex;
           flex-direction: column;
           height: 100%;
+          min-width: 0;
           border-radius: var(--radius-lg);
           background: #ffffff;
           border: 1px solid var(--border-subtle);
           box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
           transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+          overflow: hidden;
         }
 
         .project-card:hover {
@@ -327,6 +320,31 @@ export const Portfolio: React.FC = () => {
         .project-footer {
           padding-top: 16px;
           border-top: 1px solid var(--border-subtle);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+        }
+
+        .btn-live-preview {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          font-size: 0.78rem;
+          font-weight: 700;
+          color: var(--brand-cyan);
+          background: rgba(2, 132, 199, 0.08);
+          border: 1px solid rgba(2, 132, 199, 0.25);
+          padding: 5px 12px;
+          border-radius: var(--radius-full);
+          text-decoration: none;
+          transition: all 0.2s ease;
+        }
+
+        .btn-live-preview:hover {
+          background: var(--brand-cyan);
+          color: #ffffff;
+          box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
         }
 
         .btn-case-study {
@@ -334,7 +352,7 @@ export const Portfolio: React.FC = () => {
           border: none;
           color: var(--brand-amber-dark);
           font-weight: 700;
-          font-size: 0.92rem;
+          font-size: 0.88rem;
           display: inline-flex;
           align-items: center;
           gap: 8px;
@@ -498,25 +516,73 @@ export const Portfolio: React.FC = () => {
           border-top: 1px solid var(--border-subtle);
         }
 
+        .modal-footer-actions {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+
+        .btn-modal-live {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 10px 18px;
+          font-size: 0.88rem;
+          font-weight: 700;
+          color: var(--brand-cyan);
+          background: rgba(2, 132, 199, 0.06);
+          border: 1.5px solid var(--brand-cyan);
+          border-radius: var(--radius-md);
+          text-decoration: none;
+          transition: all 0.2s ease;
+        }
+
+        .btn-modal-live:hover {
+          background: var(--brand-cyan);
+          color: #ffffff;
+        }
+
         @media (max-width: 1100px) {
           :global(.portfolio-grid),
           .portfolio-grid {
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 24px;
+            margin-top: 40px;
           }
         }
 
-        @media (max-width: 700px) {
+        @media (max-width: 720px) {
           :global(.portfolio-grid),
           .portfolio-grid {
             grid-template-columns: 1fr;
-            gap: 18px;
+            gap: 20px;
+            margin-top: 32px;
           }
           .project-card {
-            padding: 22px 18px;
+            padding: 24px 20px;
           }
-          .case-metrics-banner {
-            grid-template-columns: repeat(2, 1fr);
+          .project-title {
+            font-size: 1.15rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .project-card {
+            padding: 20px 16px;
+          }
+          .project-header {
+            gap: 6px;
+          }
+          .project-footer {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+          }
+          .btn-live-preview {
+            width: 100%;
+            justify-content: center;
           }
         }
       `}</style>

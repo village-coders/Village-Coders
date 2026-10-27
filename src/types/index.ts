@@ -23,6 +23,7 @@ export interface ProjectCaseStudy {
   year: string;
   deliverables: string[];
   gradient: string;
+  liveUrl?: string;
 }
 
 export interface TeamMember {
@@ -59,9 +60,13 @@ export interface ContactFormData {
   name: string;
   email: string;
   phone?: string;
-  company?: string;
-  service: string;
-  budget: string;
-  timeline: string;
-  message: string;
+  note: string;
+}
+
+export interface FeedbackFormData {
+  name: string;
+  role?: string;
+  company: string;
+  rating: number;
+  content: string;
 }

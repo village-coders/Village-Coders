@@ -16,13 +16,13 @@ export const Faq: React.FC = () => {
       <div className="container">
         <div className="text-center">
           <div className="section-badge">
-            <span>Clarifications & Terms</span>
+            <span>FAQs</span>
           </div>
           <h2 className="section-title">
-            Frequently Asked <span className="text-gradient-cyan">Engineering Questions</span>
+            Frequently Asked <span className="text-gradient-cyan">Questions</span>
           </h2>
           <p className="section-description">
-            Direct answers on our sprint cadence, IP handover, and engineering guarantees.
+            Quick, straightforward answers about how we work and build software.
           </p>
         </div>
 
@@ -59,12 +59,11 @@ export const Faq: React.FC = () => {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                       style={{ overflow: 'hidden' }}
                     >
                       <div className="faq-answer-body">
                         <p>{item.answer}</p>
-                        <div className="faq-category-tag">Category: {item.category}</div>
                       </div>
                     </motion.div>
                   )}
@@ -80,14 +79,16 @@ export const Faq: React.FC = () => {
           background: #ffffff;
           border-top: 1px solid var(--border-subtle);
           border-bottom: 1px solid var(--border-subtle);
+          position: relative;
+          clear: both;
         }
 
         .faq-container {
-          max-width: 860px;
-          margin: 56px auto 0;
+          max-width: 720px;
+          margin: 36px auto 0;
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: 12px;
         }
 
         .faq-item {
@@ -96,7 +97,7 @@ export const Faq: React.FC = () => {
           border-radius: var(--radius-md);
           overflow: hidden;
           transition: border-color 0.2s ease, box-shadow 0.2s ease;
-          box-shadow: 0 1px 4px rgba(15, 23, 42, 0.03);
+          box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
         }
 
         .faq-item:hover {
@@ -105,12 +106,12 @@ export const Faq: React.FC = () => {
 
         .faq-item.open {
           border-color: var(--brand-cyan);
-          box-shadow: 0 6px 20px rgba(2, 132, 199, 0.1);
+          box-shadow: 0 4px 16px rgba(2, 132, 199, 0.08);
         }
 
         .faq-question-btn {
           width: 100%;
-          padding: 22px 28px;
+          padding: 16px 20px;
           background: transparent;
           border: none;
           color: var(--text-primary);
@@ -119,35 +120,35 @@ export const Faq: React.FC = () => {
           justify-content: space-between;
           text-align: left;
           cursor: pointer;
-          gap: 16px;
+          gap: 14px;
         }
 
         .faq-question-title {
           display: flex;
           align-items: center;
-          gap: 16px;
-          font-size: 1.1rem;
-          font-weight: 750;
+          gap: 12px;
+          font-size: 1rem;
+          font-weight: 700;
           line-height: 1.4;
         }
 
         .faq-num {
           font-family: monospace;
-          font-size: 0.85rem;
+          font-size: 0.8rem;
           color: var(--brand-cyan);
           background: rgba(2, 132, 199, 0.08);
-          padding: 4px 8px;
+          padding: 3px 7px;
           border-radius: 4px;
           font-weight: 700;
         }
 
         .faq-icon {
-          font-size: 1.3rem;
+          font-size: 1.2rem;
           font-weight: 600;
           color: var(--brand-amber-dark);
           flex-shrink: 0;
-          width: 28px;
-          height: 28px;
+          width: 24px;
+          height: 24px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -156,31 +157,23 @@ export const Faq: React.FC = () => {
         }
 
         .faq-answer-body {
-          padding: 0 28px 24px 72px;
-          font-size: 0.98rem;
+          padding: 0 20px 16px 52px;
+          font-size: 0.92rem;
           color: var(--text-secondary);
-          line-height: 1.7;
-        }
-
-        .faq-category-tag {
-          font-size: 0.75rem;
-          color: var(--text-muted);
-          margin-top: 12px;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          font-weight: 600;
+          line-height: 1.6;
         }
 
         @media (max-width: 640px) {
           .faq-question-btn {
-            padding: 18px 20px;
+            padding: 14px 16px;
           }
           .faq-question-title {
-            font-size: 0.98rem;
-            gap: 12px;
+            font-size: 0.95rem;
+            gap: 10px;
           }
           .faq-answer-body {
-            padding: 0 20px 20px 20px;
+            padding: 0 16px 14px 16px;
+            font-size: 0.88rem;
           }
         }
       `}</style>

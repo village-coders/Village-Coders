@@ -3,7 +3,6 @@
 import React, { useState, useTransition } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { submitContactAction, ActionResponse } from '@/app/actions/contact';
-import { servicesData } from '@/data/services';
 
 const initialResponse: ActionResponse = {
   success: false,
@@ -15,12 +14,9 @@ export const ContactSection: React.FC = () => {
   const [response, setResponse] = useState<ActionResponse>(initialResponse);
   const [isPending, startTransition] = useTransition();
 
-  const [selectedService, setSelectedService] = useState<string>('web-development');
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    formData.set('service', selectedService);
 
     startTransition(async () => {
       try {
@@ -29,7 +25,7 @@ export const ContactSection: React.FC = () => {
       } catch (err) {
         setResponse({
           success: false,
-          message: 'Unable to submit brief at this moment. Please email hello@thevillagecoders.com directly.'
+          message: 'Unable to send message right now. Please email us directly at villagecoders7@gmail.com.'
         });
       }
     });
@@ -42,15 +38,15 @@ export const ContactSection: React.FC = () => {
           {/* Left Info Column */}
           <div className="contact-info">
             <div className="section-badge amber">
-              <span>Initiate Discovery</span>
+              <span>Get In Touch</span>
             </div>
 
             <h2 className="section-title">
-              Let&apos;s Build Something <span className="text-gradient-cyan">Extraordinary</span> Together.
+              Let&apos;s Build Something <span className="text-gradient-cyan">Great</span> Together.
             </h2>
 
             <p className="contact-lead">
-              Have a digital product to build or architecture to scale? Submit your brief to connect directly with our principal software architect.
+              Have an idea, project, or existing software you want to build or improve? Send us a message and our team will get back to you promptly.
             </p>
 
             <motion.div 
@@ -60,10 +56,10 @@ export const ContactSection: React.FC = () => {
             >
               <div className="sla-header">
                 <span className="pulse-dot"></span>
-                <span className="sla-title">12-Hour SLA Commitment</span>
+                <span className="sla-title">Fast Response Guarantee</span>
               </div>
               <p className="sla-text">
-                Direct review by an active software architect within 12 business hours. No sales reps, no middlemen.
+                Every inquiry is reviewed directly by our core software development team. You will hear back within a few hours.
               </p>
             </motion.div>
 
@@ -78,11 +74,10 @@ export const ContactSection: React.FC = () => {
                   <div className="channel-label">Direct Lines / WhatsApp</div>
                   <div className="channel-links">
                     <a href="tel:+2349037118808" className="channel-value">+234 903 711 8808</a>
-                    <span className="channel-tag">General</span>
+                    <span className="channel-tag">Direct</span>
                   </div>
                   <div className="channel-links mt-xs">
                     <a href="tel:+2348085742261" className="channel-value text-secondary">+234 808 574 2261</a>
-                    <span className="channel-tag emergency">Emergency</span>
                   </div>
                 </div>
               </motion.div>
@@ -94,12 +89,9 @@ export const ContactSection: React.FC = () => {
               >
                 <div className="channel-icon">✉️</div>
                 <div>
-                  <div className="channel-label">Email Inquiries</div>
+                  <div className="channel-label">Official Email</div>
                   <div className="channel-links">
                     <a href="mailto:villagecoders7@gmail.com" className="channel-value">villagecoders7@gmail.com</a>
-                  </div>
-                  <div className="channel-links mt-xs">
-                    <a href="mailto:hello@thevillagecoders.com" className="channel-value text-secondary">hello@thevillagecoders.com</a>
                   </div>
                 </div>
               </motion.div>
@@ -109,10 +101,10 @@ export const ContactSection: React.FC = () => {
                 whileHover={{ x: 6 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
               >
-                <div className="channel-icon">📍</div>
+                <div className="channel-icon">🌐</div>
                 <div>
-                  <div className="channel-label">Studio & Operation</div>
-                  <div className="channel-value">Remote & Global (thevillagecoders.com)</div>
+                  <div className="channel-label">Official Website</div>
+                  <div className="channel-value">thevillagecoders.com</div>
                 </div>
               </motion.div>
             </div>
@@ -130,20 +122,20 @@ export const ContactSection: React.FC = () => {
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="success-icon">🎉</div>
-                  <h3 className="success-title">Technical Brief Received!</h3>
-                  <p className="success-desc">{response.message}</p>
+                  <div className="success-icon">✓</div>
+                  <h3 className="success-title">Message Sent!</h3>
+                  <p className="success-desc">
+                    Your inquiry has been automatically delivered to <strong>villagecoders7@gmail.com</strong>. We will review your message and reach out shortly.
+                  </p>
                   <div className="success-action">
                     <motion.button
                       type="button"
                       className="btn btn-secondary"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => {
-                        setResponse(initialResponse);
-                      }}
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.97 }}
+                      onClick={() => setResponse(initialResponse)}
                     >
-                      Submit Another Inquiry
+                      Send Another Message
                     </motion.button>
                   </div>
                 </motion.div>
@@ -158,8 +150,8 @@ export const ContactSection: React.FC = () => {
                   transition={{ duration: 0.25 }}
                 >
                   <div className="form-header">
-                    <h3>Start Your Technical Brief</h3>
-                    <p>Fast discovery and transparent technical estimates.</p>
+                    <h3>Send Us a Message</h3>
+                    <p>Tell us about your project and we will get back to you quickly.</p>
                   </div>
 
                   {response.message && !response.success && (
@@ -172,105 +164,56 @@ export const ContactSection: React.FC = () => {
                   {/* Name & Email Row */}
                   <div className="form-row">
                     <div className="form-group">
-                      <label htmlFor="name" className="form-label">Full Name *</label>
+                      <label htmlFor="name" className="form-label">Your Name *</label>
                       <input
                         type="text"
                         id="name"
                         name="name"
                         required
-                        placeholder="e.g. Alex Morgan"
+                        placeholder="e.g. Alex"
                         className={`form-input ${response.errors?.name ? 'input-error' : ''}`}
                       />
                       {response.errors?.name && <span className="error-text">{response.errors.name}</span>}
                     </div>
 
                     <div className="form-group">
-                      <label htmlFor="email" className="form-label">Business Email *</label>
+                      <label htmlFor="email" className="form-label">Email *</label>
                       <input
                         type="email"
                         id="email"
                         name="email"
                         required
-                        placeholder="alex@company.com"
+                        placeholder="you@example.com"
                         className={`form-input ${response.errors?.email ? 'input-error' : ''}`}
                       />
                       {response.errors?.email && <span className="error-text">{response.errors.email}</span>}
                     </div>
                   </div>
 
-                  {/* Company & Phone Row */}
-                  <div className="form-row">
-                    <div className="form-group">
-                      <label htmlFor="company" className="form-label">Company / Organization</label>
-                      <input
-                        type="text"
-                        id="company"
-                        name="company"
-                        placeholder="e.g. Acme FinTech Corp"
-                        className="form-input"
-                      />
-                    </div>
-
-                    <div className="form-group">
-                      <label htmlFor="phone" className="form-label">Phone / WhatsApp</label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        placeholder="+234 903 711 8808"
-                        className="form-input"
-                      />
-                    </div>
+                  {/* Phone */}
+                  <div className="form-group">
+                    <label htmlFor="phone" className="form-label">Phone / WhatsApp (Optional)</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      placeholder="+234 903 711 8808"
+                      className="form-input"
+                    />
                   </div>
 
-                  {/* Service Selection */}
+                  {/* Note */}
                   <div className="form-group">
-                    <label htmlFor="service" className="form-label">Primary Capability Needed *</label>
-                    <select
-                      id="service"
-                      name="service"
-                      value={selectedService}
-                      onChange={(e) => setSelectedService(e.target.value)}
-                      className="form-select"
-                    >
-                      {servicesData.map((s) => (
-                        <option key={s.id} value={s.id}>{s.title}</option>
-                      ))}
-                      <option value="other">Full Custom Discovery Consultation</option>
-                    </select>
-                  </div>
-
-                  {/* Target Investment / Budget Number Input */}
-                  <div className="form-group">
-                    <label htmlFor="budget" className="form-label">
-                      Target Investment / Budget (USD)
-                    </label>
-                    <div className="budget-input-wrapper">
-                      <span className="currency-prefix">$</span>
-                      <input
-                        type="number"
-                        id="budget"
-                        name="budget"
-                        min="0"
-                        step="500"
-                        placeholder="e.g. 10000"
-                        className="form-input budget-number-input"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Project Brief Message */}
-                  <div className="form-group">
-                    <label htmlFor="message" className="form-label">Project Scope & Core Objectives *</label>
+                    <label htmlFor="note" className="form-label">Note *</label>
                     <textarea
-                      id="message"
-                      name="message"
+                      id="note"
+                      name="note"
                       required
                       rows={4}
-                      placeholder="Tell us about what you want to build, current challenges, technical requirements, and target launch dates..."
-                      className={`form-textarea ${response.errors?.message ? 'input-error' : ''}`}
+                      placeholder="Leave us a note about your project, idea, or questions..."
+                      className={`form-textarea ${response.errors?.note ? 'input-error' : ''}`}
                     ></textarea>
-                    {response.errors?.message && <span className="error-text">{response.errors.message}</span>}
+                    {response.errors?.note && <span className="error-text">{response.errors.note}</span>}
                   </div>
 
                   <motion.button
@@ -284,14 +227,14 @@ export const ContactSection: React.FC = () => {
                     {isPending ? (
                       <>
                         <span className="spinner"></span>
-                        <span>Processing Server Action...</span>
+                        <span>Sending Note...</span>
                       </>
                     ) : (
                       <>
-                        <span>Submit Technical Brief & Schedule Discovery</span>
+                        <span>Send Note to Village Coders</span>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                          <polyline points="12 5 19 12 12 19"></polyline>
+                          <line x1="22" y1="2" x2="11" y2="13"></line>
+                          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                         </svg>
                       </>
                     )}
@@ -307,29 +250,30 @@ export const ContactSection: React.FC = () => {
         .contact-section {
           background: #f8fafc;
           position: relative;
+          clear: both;
         }
 
         .contact-grid {
           display: grid;
           grid-template-columns: 1fr 1.25fr;
-          gap: 56px;
+          gap: 52px;
           align-items: flex-start;
         }
 
         .contact-info {
           display: flex;
           flex-direction: column;
-          gap: 24px;
+          gap: 22px;
         }
 
         .contact-lead {
-          font-size: 1.1rem;
+          font-size: 1.05rem;
           color: var(--text-secondary);
           line-height: 1.65;
         }
 
         :global(.sla-card) {
-          padding: 24px;
+          padding: 22px;
           background: rgba(2, 132, 199, 0.05);
           border: 1px solid rgba(2, 132, 199, 0.2);
           border-radius: var(--radius-md);
@@ -339,11 +283,11 @@ export const ContactSection: React.FC = () => {
           display: flex;
           align-items: center;
           gap: 10px;
-          margin-bottom: 8px;
+          margin-bottom: 6px;
         }
 
         .sla-title {
-          font-size: 0.95rem;
+          font-size: 0.92rem;
           font-weight: 750;
           color: var(--brand-cyan);
         }
@@ -354,35 +298,50 @@ export const ContactSection: React.FC = () => {
           line-height: 1.5;
         }
 
+        .pulse-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: var(--brand-green);
+          box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7);
+          animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+          0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7); }
+          70% { box-shadow: 0 0 0 8px rgba(22, 163, 74, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+        }
+
         .direct-channels {
           display: flex;
           flex-direction: column;
-          gap: 16px;
-          margin-top: 10px;
+          gap: 14px;
+          margin-top: 6px;
         }
 
         :global(.channel-item) {
           display: flex;
           align-items: center;
-          gap: 16px;
-          cursor: pointer;
+          gap: 14px;
         }
 
         .channel-icon {
-          width: 44px;
-          height: 44px;
+          width: 42px;
+          height: 42px;
           border-radius: var(--radius-sm);
           background: #ffffff;
           border: 1px solid var(--border-subtle);
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 1.2rem;
+          font-size: 1.15rem;
+          flex-shrink: 0;
         }
 
         .channel-label {
-          font-size: 0.75rem;
+          font-size: 0.72rem;
           color: var(--text-muted);
           text-transform: uppercase;
           letter-spacing: 0.05em;
@@ -390,7 +349,7 @@ export const ContactSection: React.FC = () => {
         }
 
         .channel-value {
-          font-size: 0.95rem;
+          font-size: 0.92rem;
           font-weight: 700;
           color: var(--text-primary);
           transition: color var(--transition-fast);
@@ -412,11 +371,11 @@ export const ContactSection: React.FC = () => {
         }
 
         .channel-links.mt-xs {
-          margin-top: 4px;
+          margin-top: 3px;
         }
 
         .channel-tag {
-          font-size: 0.68rem;
+          font-size: 0.65rem;
           font-weight: 700;
           color: var(--brand-cyan);
           background: rgba(2, 132, 199, 0.08);
@@ -424,18 +383,11 @@ export const ContactSection: React.FC = () => {
           padding: 1px 6px;
           border-radius: var(--radius-full);
           text-transform: uppercase;
-          letter-spacing: 0.03em;
-        }
-
-        .channel-tag.emergency {
-          color: var(--brand-amber-dark);
-          background: rgba(217, 119, 6, 0.08);
-          border-color: rgba(217, 119, 6, 0.25);
         }
 
         /* Form Wrapper */
         .contact-form-wrapper {
-          padding: 40px;
+          padding: 36px;
           background: #ffffff;
           border: 1px solid var(--border-subtle);
           border-radius: var(--radius-lg);
@@ -443,109 +395,124 @@ export const ContactSection: React.FC = () => {
         }
 
         .form-header {
-          margin-bottom: 24px;
+          margin-bottom: 22px;
         }
 
         .form-header h3 {
-          font-size: 1.5rem;
-          font-weight: 850;
+          font-size: 1.4rem;
+          font-weight: 800;
           color: var(--text-primary);
-          margin-bottom: 6px;
+          margin-bottom: 4px;
         }
 
         .form-header p {
-          font-size: 0.9rem;
+          font-size: 0.88rem;
           color: var(--text-secondary);
         }
 
-        :global(.contact-form) {
+        .error-alert {
+          padding: 12px 16px;
+          background: rgba(239, 68, 68, 0.08);
+          border: 1px solid rgba(239, 68, 68, 0.25);
+          border-radius: var(--radius-sm);
+          color: #dc2626;
+          font-size: 0.88rem;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 18px;
+        }
+
+        .contact-form {
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 18px;
         }
 
         .form-row {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: repeat(2, 1fr);
           gap: 16px;
         }
 
         .form-group {
           display: flex;
           flex-direction: column;
-          gap: 8px;
+          gap: 6px;
         }
 
         .form-label {
-          font-size: 0.85rem;
-          font-weight: 700;
+          font-size: 0.84rem;
+          font-weight: 650;
           color: var(--text-primary);
         }
 
-        .form-input, .form-select, .form-textarea {
+        .form-input,
+        .form-select,
+        .form-textarea {
           width: 100%;
-          padding: 12px 16px;
+          padding: 10px 14px;
           background: #ffffff;
-          border: 1.5px solid #cbd5e1;
+          border: 1px solid var(--border-subtle);
           border-radius: var(--radius-sm);
-          color: var(--text-primary);
           font-size: 0.92rem;
+          color: var(--text-primary);
           transition: border-color 0.2s ease, box-shadow 0.2s ease;
+          outline: none;
+          font-family: inherit;
         }
 
-        .form-input:focus, .form-select:focus, .form-textarea:focus {
-          outline: none;
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
           border-color: var(--brand-cyan);
           box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
         }
 
-        .input-error {
+        .form-input.input-error,
+        .form-textarea.input-error {
           border-color: #ef4444;
         }
 
         .error-text {
-          font-size: 0.78rem;
-          color: #ef4444;
-        }
-
-        .error-alert {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          padding: 12px 16px;
-          background: #fef2f2;
-          border: 1px solid #fecaca;
-          border-radius: var(--radius-sm);
-          color: #b91c1c;
-          font-size: 0.88rem;
+          font-size: 0.75rem;
+          color: #dc2626;
+          font-weight: 500;
         }
 
         .budget-input-wrapper {
           position: relative;
           display: flex;
           align-items: center;
-          width: 100%;
         }
 
         .currency-prefix {
           position: absolute;
-          left: 14px;
-          font-weight: 700;
-          font-size: 1rem;
+          left: 12px;
           color: var(--text-muted);
+          font-weight: 700;
+          font-size: 0.95rem;
           pointer-events: none;
-          user-select: none;
-          z-index: 2;
         }
 
         .budget-number-input {
-          padding-left: 32px !important;
+          padding-left: 28px;
         }
 
-        :global(.submit-btn) {
-          padding: 16px;
-          font-size: 1rem;
-          margin-top: 10px;
+        .submit-btn {
+          margin-top: 6px;
+          padding: 14px 24px;
+          font-size: 0.95rem;
+          font-weight: 700;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          cursor: pointer;
+        }
+
+        .w-full {
+          width: 100%;
         }
 
         .spinner {
@@ -561,51 +528,57 @@ export const ContactSection: React.FC = () => {
           to { transform: rotate(360deg); }
         }
 
-        :global(.success-banner) {
+        /* Success Banner */
+        .success-banner {
           text-align: center;
-          padding: 40px 20px;
+          padding: 32px 16px;
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 16px;
+          gap: 12px;
         }
 
         .success-icon {
-          font-size: 3rem;
+          width: 56px;
+          height: 56px;
+          border-radius: 50%;
+          background: rgba(22, 163, 74, 0.1);
+          color: var(--brand-green);
+          font-size: 1.8rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 800;
         }
 
         .success-title {
-          font-size: 1.8rem;
-          font-weight: 850;
+          font-size: 1.4rem;
+          font-weight: 800;
           color: var(--text-primary);
         }
 
         .success-desc {
-          font-size: 1rem;
+          font-size: 0.92rem;
           color: var(--text-secondary);
-          max-width: 480px;
           line-height: 1.6;
+          max-width: 440px;
         }
 
-        .w-full {
-          width: 100%;
+        .success-action {
+          margin-top: 12px;
         }
 
-        @media (max-width: 960px) {
+        @media (max-width: 900px) {
           .contact-grid {
             grid-template-columns: 1fr;
-          }
-        }
-
-        @media (max-width: 640px) {
-          .form-row {
-            grid-template-columns: 1fr;
-          }
-          .budget-radios {
-            grid-template-columns: 1fr;
+            gap: 40px;
           }
           .contact-form-wrapper {
-            padding: 24px;
+            padding: 28px 20px;
+          }
+          .form-row {
+            grid-template-columns: 1fr;
+            gap: 14px;
           }
         }
       `}</style>

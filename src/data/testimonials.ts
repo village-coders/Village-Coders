@@ -3,42 +3,52 @@ import { Testimonial } from '@/types';
 export const testimonialsData: Testimonial[] = [
   {
     id: 'test-1',
-    author: 'Kwame Adewale',
-    title: 'CTO & Co-Founder',
-    company: 'PayCraft Pan-African Group',
+    author: 'Coach K. Alamu',
+    title: 'Founder & Head Coach',
+    company: 'Alamu Football Academy',
     rating: 5,
-    content: 'Village Coders shipped our core payment gateway two weeks ahead of schedule. Exceptional code quality, test coverage, and high-concurrency architecture.',
-    projectScope: 'FinTech Payment Gateway & Merchant Portal',
-    avatarSeed: 'Kwame'
+    content: 'Working with Village Coders was a breath of fresh air. They built our academy website and player scouting portal quickly, and now international scouts can easily find and evaluate our players online without any hassle.',
+    projectScope: 'Sports Academy & Player Scouting Hub',
+    avatarSeed: 'Alamu'
   },
   {
     id: 'test-2',
-    author: 'Sarah Jenkins',
-    title: 'VP of Product',
-    company: 'Agrilink Holdings',
+    author: 'Dr. A. Rahman',
+    title: 'Compliance & Auditing Director',
+    company: 'Halal Food Authority (UK & Global)',
     rating: 5,
-    content: 'Their offline-first architecture accelerated our supply chain operations by 250%. Even in zero-coverage zones, field agents log data flawlessly.',
-    projectScope: 'AgriConnect B2B Enterprise Platform',
-    avatarSeed: 'Sarah'
+    content: 'Village Coders built our international certification body portal with great precision. Managing global standards, client audits, and scheme registrations across multiple countries has never been smoother.',
+    projectScope: 'Global Certification & Standards Portal',
+    avatarSeed: 'Rahman'
   },
   {
     id: 'test-3',
-    author: 'Dr. Tunde Fashola',
-    title: 'Managing Director',
-    company: 'Kura Health Technologies',
+    author: 'Engr. M. Bello',
+    title: 'Operations & Technical Lead',
+    company: 'Halal Cert Nigeria',
     rating: 5,
-    content: 'From HIPAA compliance to sub-second WebRTC video consults, Village Coders exceeded every technical benchmark.',
-    projectScope: 'Telemedicine Web & Mobile Ecosystem',
-    avatarSeed: 'Tunde'
+    content: 'The team took our complex audit and certificate verification requirements and turned them into a clean, simple system that works every time. Our clients love the instant QR verification and automated invoices.',
+    projectScope: 'National Audit & QR Verification System',
+    avatarSeed: 'Bello'
   },
   {
     id: 'test-4',
-    author: 'Elena Rostova',
-    title: 'Head of Infrastructure',
-    company: 'Orbit Global Technologies',
+    author: 'Prince A. Akanbi',
+    title: 'Communications Lead',
+    company: 'Royal Palace of Iwoland',
     rating: 5,
-    content: 'They migrated our infrastructure into an automated Kubernetes cluster with Terraform, slashing 42% off our monthly AWS cloud bill.',
-    projectScope: 'Cloud DevOps & Cost Optimization',
-    avatarSeed: 'Elena'
+    content: 'They delivered our palace web portal on time and made sure it loads fast on every mobile phone. Communication was smooth from start to finish, and they were always available whenever we needed quick adjustments.',
+    projectScope: 'Royal Corporate & Media Portal',
+    avatarSeed: 'Akanbi'
+  },
+  {
+    id: 'test-5',
+    author: 'Dr. S. Okonjo',
+    title: 'Principal Scientist',
+    company: 'HDI Diagnostics & Laboratory',
+    rating: 5,
+    content: 'Village Coders built our lab test tracking platform with great care and attention to detail. Patient records and lab results are easy to manage, and our entire laboratory team picked it up on day one.',
+    projectScope: 'HDI LabTest Diagnostics System',
+    avatarSeed: 'Okonjo'
   }
 ];
