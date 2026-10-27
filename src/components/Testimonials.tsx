@@ -23,7 +23,7 @@ export const Testimonials: React.FC = () => {
     const content = formData.get('content')?.toString().trim() || '';
 
     if (!name || !content) {
-      setFeedbackError('Please enter your name and feedback.');
+      setFeedbackError('Please enter your name and your feedback.');
       return;
     }
 
@@ -64,6 +64,7 @@ export const Testimonials: React.FC = () => {
     setFeedbackSuccess(false);
     setFeedbackError('');
     setRating(5);
+    setHoverRating(0);
   };
 
   return (
@@ -152,105 +153,136 @@ export const Testimonials: React.FC = () => {
         </div>
       </div>
 
-      {/* Clean Feedback Modal */}
+      {/* Ultra-Clean, Professional Feedback Modal */}
       <AnimatePresence>
         {isModalOpen && (
           <motion.div 
-            className="modal-backdrop"
+            className="feedback-modal-backdrop"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={resetModal}
+            style={{
+              position: 'fixed',
+              inset: 0,
+              backgroundColor: 'rgba(15, 23, 42, 0.72)',
+              backdropFilter: 'blur(8px)',
+              WebkitBackdropFilter: 'blur(8px)',
+              zIndex: 9999,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '20px'
+            }}
           >
             <motion.div 
-              className="modal-card"
-              initial={{ scale: 0.94, opacity: 0, y: 14 }}
+              className="feedback-modal-card"
+              initial={{ scale: 0.92, opacity: 0, y: 16 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.94, opacity: 0, y: 14 }}
-              transition={{ duration: 0.2, ease: 'easeOut' }}
+              exit={{ scale: 0.92, opacity: 0, y: 16 }}
+              transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
+              style={{
+                backgroundColor: '#ffffff',
+                maxWidth: '500px',
+                width: '100%',
+                borderRadius: '20px',
+                border: '1px solid #e2e8f0',
+                boxShadow: '0 25px 60px -15px rgba(15, 23, 42, 0.3), 0 0 0 1px rgba(15, 23, 42, 0.05)',
+                padding: '32px 32px 28px',
+                position: 'relative',
+                maxHeight: '90vh',
+                overflowY: 'auto'
+              }}
             >
-              <div className="modal-header">
+              {/* Header */}
+              <div className="fb-modal-header">
                 <div>
-                  <h3 className="modal-title">Share Your Feedback</h3>
-                  <p className="modal-subtitle">We appreciate your honest thoughts.</p>
+                  <div className="fb-badge">
+                    <span>⭐ Client Feedback</span>
+                  </div>
+                  <h3 className="fb-modal-title">Share Your Experience</h3>
+                  <p className="fb-modal-subtitle">We appreciate your honest thoughts and review.</p>
                 </div>
                 <button 
                   type="button" 
-                  className="modal-close-btn" 
+                  className="fb-close-btn" 
                   onClick={resetModal}
-                  aria-label="Close"
+                  aria-label="Close modal"
                 >
                   ✕
                 </button>
               </div>
 
               {feedbackSuccess ? (
-                <div className="modal-success">
-                  <div className="success-icon">✓</div>
+                <div className="fb-modal-success">
+                  <div className="fb-success-icon">✓</div>
                   <h4>Thank You for Your Feedback!</h4>
-                  <p>Your review has been submitted and sent to villagecoders7@gmail.com.</p>
-                  <button type="button" className="btn btn-primary" onClick={resetModal}>
+                  <p>Your review has been submitted to villagecoders7@gmail.com and added to our feedback list.</p>
+                  <button type="button" className="btn btn-primary w-full" onClick={resetModal}>
                     Close
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleFeedbackSubmit} className="feedback-form">
+                <form onSubmit={handleFeedbackSubmit} className="fb-modal-form">
                   {feedbackError && (
-                    <div className="form-error-msg">⚠️ {feedbackError}</div>
+                    <div className="fb-error-msg">⚠️ {feedbackError}</div>
                   )}
 
                   {/* Rating Selector */}
-                  <div className="rating-select-group">
-                    <label className="form-label">Your Rating *</label>
-                    <div className="star-picker">
+                  <div className="fb-form-group">
+                    <label className="fb-form-label">How would you rate our work? *</label>
+                    <div className="fb-star-picker">
                       {[1, 2, 3, 4, 5].map((star) => (
                         <button
                           key={star}
                           type="button"
-                          className={`star-pick-btn ${star <= (hoverRating || rating) ? 'active' : ''}`}
+                          className={`fb-star-btn ${star <= (hoverRating || rating) ? 'active' : ''}`}
                           onMouseEnter={() => setHoverRating(star)}
                           onMouseLeave={() => setHoverRating(0)}
                           onClick={() => setRating(star)}
-                          aria-label={`${star} star${star > 1 ? 's' : ''}`}
+                          aria-label={`${star} star`}
                         >
                           ★
                         </button>
                       ))}
-                      <span className="rating-score-label">{rating} / 5 Stars</span>
+                      <span className="fb-rating-score">
+                        {hoverRating || rating} of 5 Stars
+                      </span>
                     </div>
                   </div>
 
                   {/* Name */}
-                  <div className="form-group">
-                    <label htmlFor="fb-name" className="form-label">Your Name *</label>
+                  <div className="fb-form-group">
+                    <label htmlFor="fb-name" className="fb-form-label">Your Name *</label>
                     <input
                       type="text"
                       id="fb-name"
                       name="name"
                       required
                       placeholder="e.g. David Adeyemi"
-                      className="form-input"
+                      className="fb-form-input"
                     />
                   </div>
 
-                  {/* Feedback Content */}
-                  <div className="form-group">
-                    <label htmlFor="fb-content" className="form-label">Your Feedback *</label>
+                  {/* Feedback Textarea */}
+                  <div className="fb-form-group">
+                    <label htmlFor="fb-content" className="fb-form-label">Your Feedback / Review *</label>
                     <textarea
                       id="fb-content"
                       name="content"
                       required
                       rows={4}
-                      placeholder="Tell us about your experience working with Village Coders..."
-                      className="form-textarea"
+                      placeholder="Tell us about your experience working with Village Coders, our communication, delivery speed, and code quality..."
+                      className="fb-form-textarea"
                     ></textarea>
                   </div>
 
-                  <div className="modal-actions">
+                  {/* Actions */}
+                  <div className="fb-modal-actions">
                     <button
                       type="button"
-                      className="btn-modal-cancel"
+                      className="fb-btn-cancel"
                       onClick={resetModal}
                     >
                       Cancel
@@ -258,9 +290,9 @@ export const Testimonials: React.FC = () => {
                     <button
                       type="submit"
                       disabled={isPending}
-                      className="btn btn-primary btn-modal-submit"
+                      className="fb-btn-submit"
                     >
-                      {isPending ? 'Submitting...' : 'Submit Feedback'}
+                      {isPending ? 'Submitting...' : 'Submit Feedback ➔'}
                     </button>
                   </div>
                 </form>
@@ -270,7 +302,7 @@ export const Testimonials: React.FC = () => {
         )}
       </AnimatePresence>
 
-      <style jsx>{`
+      <style jsx global>{`
         .testimonials-section {
           background: #f8fafc;
           position: relative;
@@ -285,7 +317,7 @@ export const Testimonials: React.FC = () => {
           margin-top: 52px;
         }
 
-        :global(.testimonial-card) {
+        .testimonial-card {
           padding: 34px;
           display: flex;
           flex-direction: column;
@@ -304,7 +336,7 @@ export const Testimonials: React.FC = () => {
           margin-bottom: 18px;
         }
 
-        :global(.star) {
+        .rating-stars .star {
           color: var(--brand-amber-light);
           font-size: 1.15rem;
           display: inline-block;
@@ -353,7 +385,7 @@ export const Testimonials: React.FC = () => {
           border-top: 1px solid var(--border-subtle);
         }
 
-        :global(.author-avatar) {
+        .author-avatar {
           width: 44px;
           height: 44px;
           border-radius: 50%;
@@ -442,85 +474,75 @@ export const Testimonials: React.FC = () => {
           box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
         }
 
-        /* Modal Styles */
-        .modal-backdrop {
-          position: fixed;
-          inset: 0;
-          background: rgba(15, 23, 42, 0.65);
-          backdrop-filter: blur(8px);
-          z-index: 999;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 20px;
-        }
-
-        .modal-card {
-          background: #ffffff;
-          max-width: 480px;
-          width: 100%;
-          border-radius: 16px;
-          border: 1px solid var(--border-subtle);
-          box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.25);
-          padding: 28px 28px 24px;
-          max-height: 90vh;
-          overflow-y: auto;
-          position: relative;
-        }
-
-        .modal-header {
+        /* --- Full Professional Modal Styling --- */
+        .fb-modal-header {
           display: flex;
           align-items: flex-start;
           justify-content: space-between;
-          padding-bottom: 16px;
+          padding-bottom: 18px;
           border-bottom: 1px solid #f1f5f9;
-          margin-bottom: 20px;
+          margin-bottom: 22px;
         }
 
-        .modal-title {
-          font-size: 1.3rem;
-          font-weight: 800;
-          color: var(--text-primary);
+        .fb-badge {
+          display: inline-block;
+          font-size: 0.72rem;
+          font-weight: 750;
+          color: var(--brand-cyan);
+          background: rgba(2, 132, 199, 0.08);
+          border: 1px solid rgba(2, 132, 199, 0.2);
+          border-radius: var(--radius-full);
+          padding: 3px 10px;
+          margin-bottom: 8px;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+
+        .fb-modal-title {
+          font-size: 1.35rem;
+          font-weight: 850;
+          color: #0f172a;
           line-height: 1.25;
           margin: 0;
         }
 
-        .modal-subtitle {
-          font-size: 0.85rem;
-          color: var(--text-secondary);
+        .fb-modal-subtitle {
+          font-size: 0.88rem;
+          color: #64748b;
           margin-top: 4px;
           margin-bottom: 0;
         }
 
-        .modal-close-btn {
+        .fb-close-btn {
           background: #f1f5f9;
-          border: none;
-          width: 32px;
-          height: 32px;
+          border: 1px solid #e2e8f0;
+          width: 36px;
+          height: 36px;
           border-radius: 50%;
           cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 0.95rem;
-          color: #64748b;
-          transition: background 0.2s ease, color 0.2s ease;
+          color: #475569;
+          transition: all 0.2s ease;
           flex-shrink: 0;
-          margin-left: 12px;
+          margin-left: 14px;
         }
 
-        .modal-close-btn:hover {
+        .fb-close-btn:hover {
           background: #e2e8f0;
           color: #0f172a;
+          transform: scale(1.05);
         }
 
-        .feedback-form {
+        .fb-modal-form {
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: 18px;
         }
 
-        .form-error-msg {
+        .fb-error-msg {
           padding: 10px 14px;
           background: rgba(239, 68, 68, 0.08);
           border: 1px solid rgba(239, 68, 68, 0.25);
@@ -529,140 +551,168 @@ export const Testimonials: React.FC = () => {
           font-size: 0.85rem;
         }
 
-        .rating-select-group {
+        .fb-form-group {
           display: flex;
           flex-direction: column;
-          gap: 6px;
+          gap: 7px;
         }
 
-        .star-picker {
+        .fb-form-label {
+          font-size: 0.86rem;
+          font-weight: 700;
+          color: #1e293b;
+        }
+
+        .fb-star-picker {
           display: flex;
           align-items: center;
-          gap: 6px;
+          gap: 8px;
+          padding: 8px 12px;
+          background: #f8fafc;
+          border: 1px solid #e2e8f0;
+          border-radius: var(--radius-md);
         }
 
-        .star-pick-btn {
+        .fb-star-btn {
           background: none;
           border: none;
-          font-size: 1.9rem;
-          color: #e2e8f0;
+          font-size: 2rem;
+          color: #cbd5e1;
           cursor: pointer;
           transition: transform 0.15s ease, color 0.15s ease;
-          padding: 0 3px;
+          padding: 0 2px;
           line-height: 1;
         }
 
-        .star-pick-btn:hover {
-          transform: scale(1.15);
+        .fb-star-btn:hover {
+          transform: scale(1.2);
         }
 
-        .star-pick-btn.active {
+        .fb-star-btn.active {
           color: #f59e0b;
         }
 
-        .rating-score-label {
-          font-size: 0.85rem;
-          font-weight: 700;
-          color: var(--text-muted);
-          margin-left: 8px;
+        .fb-rating-score {
+          font-size: 0.88rem;
+          font-weight: 750;
+          color: #0284c7;
+          margin-left: auto;
+          background: rgba(2, 132, 199, 0.08);
+          padding: 3px 10px;
+          border-radius: var(--radius-full);
         }
 
-        .form-group {
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-        }
-
-        .form-label {
-          font-size: 0.82rem;
-          font-weight: 700;
-          color: var(--text-primary);
-        }
-
-        .form-input,
-        .form-textarea {
+        .fb-form-input,
+        .fb-form-textarea {
           width: 100%;
-          padding: 10px 14px;
+          padding: 11px 14px;
           background: #ffffff;
-          border: 1px solid var(--border-subtle);
-          border-radius: var(--radius-sm);
-          font-size: 0.9rem;
-          color: var(--text-primary);
+          border: 1.5px solid #cbd5e1;
+          border-radius: var(--radius-md);
+          font-size: 0.92rem;
+          color: #0f172a;
           outline: none;
           font-family: inherit;
+          transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .form-input:focus,
-        .form-textarea:focus {
-          border-color: var(--brand-cyan);
+        .fb-form-input:focus,
+        .fb-form-textarea:focus {
+          border-color: #0284c7;
           box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
         }
 
-        .modal-actions {
+        .fb-form-textarea {
+          resize: vertical;
+          min-height: 100px;
+          line-height: 1.55;
+        }
+
+        .fb-modal-actions {
           display: flex;
           align-items: center;
           justify-content: flex-end;
           gap: 12px;
           margin-top: 6px;
-          padding-top: 14px;
+          padding-top: 16px;
           border-top: 1px solid #f1f5f9;
         }
 
-        .btn-modal-cancel {
-          padding: 10px 18px;
+        .fb-btn-cancel {
+          padding: 11px 20px;
           background: #f1f5f9;
-          color: var(--text-secondary);
-          border: 1px solid var(--border-subtle);
+          color: #475569;
+          border: 1px solid #cbd5e1;
           border-radius: var(--radius-md);
-          font-size: 0.9rem;
-          font-weight: 600;
+          font-size: 0.92rem;
+          font-weight: 650;
           cursor: pointer;
-          transition: background 0.2s ease;
+          transition: all 0.2s ease;
         }
 
-        .btn-modal-cancel:hover {
+        .fb-btn-cancel:hover {
           background: #e2e8f0;
-          color: var(--text-primary);
+          color: #0f172a;
         }
 
-        .btn-modal-submit {
-          padding: 10px 22px;
-          font-size: 0.9rem;
+        .fb-btn-submit {
+          padding: 11px 24px;
+          background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+          color: #ffffff;
+          border: none;
+          border-radius: var(--radius-md);
+          font-size: 0.92rem;
           font-weight: 700;
+          cursor: pointer;
+          box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+          transition: all 0.2s ease;
         }
 
-        .modal-success {
+        .fb-btn-submit:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 6px 18px rgba(2, 132, 199, 0.45);
+        }
+
+        .fb-btn-submit:disabled {
+          opacity: 0.65;
+          cursor: not-allowed;
+          transform: none;
+        }
+
+        .fb-modal-success {
           text-align: center;
-          padding: 24px 16px;
+          padding: 28px 12px;
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 12px;
+          gap: 14px;
         }
 
-        .modal-success .success-icon {
-          width: 50px;
-          height: 50px;
+        .fb-success-icon {
+          width: 58px;
+          height: 58px;
           border-radius: 50%;
           background: rgba(22, 163, 74, 0.1);
-          color: var(--brand-green);
-          font-size: 1.6rem;
+          color: #16a34a;
+          font-size: 1.8rem;
           display: flex;
           align-items: center;
           justify-content: center;
           font-weight: 800;
         }
 
-        .modal-success h4 {
-          font-size: 1.25rem;
-          font-weight: 800;
-          color: var(--text-primary);
+        .fb-modal-success h4 {
+          font-size: 1.3rem;
+          font-weight: 850;
+          color: #0f172a;
+          margin: 0;
         }
 
-        .modal-success p {
-          font-size: 0.9rem;
-          color: var(--text-secondary);
-          line-height: 1.5;
+        .fb-modal-success p {
+          font-size: 0.92rem;
+          color: #64748b;
+          line-height: 1.6;
+          margin: 0 0 10px;
         }
 
         @media (max-width: 900px) {
