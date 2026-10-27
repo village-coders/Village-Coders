@@ -20,12 +20,10 @@ export const Testimonials: React.FC = () => {
     const form = e.currentTarget;
     const formData = new FormData(form);
     const name = formData.get('name')?.toString().trim() || '';
-    const role = formData.get('role')?.toString().trim() || '';
-    const company = formData.get('company')?.toString().trim() || '';
     const content = formData.get('content')?.toString().trim() || '';
 
-    if (!name || !content || !company) {
-      setFeedbackError('Please fill in your name, company/project, and feedback.');
+    if (!name || !content) {
+      setFeedbackError('Please enter your name and feedback.');
       return;
     }
 
@@ -34,23 +32,21 @@ export const Testimonials: React.FC = () => {
       try {
         const res = await submitFeedbackAction({
           name,
-          role,
-          company,
+          company: 'Verified Client',
           rating,
           content
         });
 
         if (res.success) {
           setFeedbackSuccess(true);
-          // Add to local testimonials list immediately
           const newTestimonial: Testimonial = {
             id: `client-fb-${Date.now()}`,
             author: name,
-            title: role || 'Verified Client',
-            company,
+            title: 'Verified Client',
+            company: 'Client Partner',
             rating,
             content,
-            projectScope: company,
+            projectScope: 'Web & Software Solutions',
             avatarSeed: name
           };
           setTestimonials((prev) => [newTestimonial, ...prev]);
@@ -135,14 +131,14 @@ export const Testimonials: React.FC = () => {
           ))}
         </div>
 
-        {/* Place to Submit Feedback Banner */}
+        {/* Submit Feedback Action Banner */}
         <div className="feedback-cta-banner glass-card">
           <div className="feedback-cta-content">
             <div className="feedback-cta-text">
               <span className="cta-sparkle">💬</span>
               <div>
                 <h4 className="cta-heading">Worked with Village Coders?</h4>
-                <p className="cta-sub">We value your feedback. Share your experience with our team.</p>
+                <p className="cta-sub">We value your partnership. Share your feedback with our team.</p>
               </div>
             </div>
             <button
@@ -156,7 +152,7 @@ export const Testimonials: React.FC = () => {
         </div>
       </div>
 
-      {/* Submit Feedback Modal */}
+      {/* Clean Feedback Modal */}
       <AnimatePresence>
         {isModalOpen && (
           <motion.div 
@@ -167,26 +163,33 @@ export const Testimonials: React.FC = () => {
             onClick={resetModal}
           >
             <motion.div 
-              className="modal-card glass-card"
-              initial={{ scale: 0.94, opacity: 0, y: 16 }}
+              className="modal-card"
+              initial={{ scale: 0.94, opacity: 0, y: 14 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.94, opacity: 0, y: 16 }}
-              transition={{ duration: 0.22, ease: 'easeOut' }}
+              exit={{ scale: 0.94, opacity: 0, y: 14 }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
               onClick={(e) => e.stopPropagation()}
             >
               <div className="modal-header">
                 <div>
                   <h3 className="modal-title">Share Your Feedback</h3>
-                  <p className="modal-subtitle">Tell us about your project experience with Village Coders.</p>
+                  <p className="modal-subtitle">We appreciate your honest thoughts.</p>
                 </div>
-                <button type="button" className="modal-close-btn" onClick={resetModal}>✕</button>
+                <button 
+                  type="button" 
+                  className="modal-close-btn" 
+                  onClick={resetModal}
+                  aria-label="Close"
+                >
+                  ✕
+                </button>
               </div>
 
               {feedbackSuccess ? (
                 <div className="modal-success">
                   <div className="success-icon">✓</div>
                   <h4>Thank You for Your Feedback!</h4>
-                  <p>Your review has been submitted and shared with villagecoders7@gmail.com.</p>
+                  <p>Your review has been submitted and sent to villagecoders7@gmail.com.</p>
                   <button type="button" className="btn btn-primary" onClick={resetModal}>
                     Close
                   </button>
@@ -209,7 +212,7 @@ export const Testimonials: React.FC = () => {
                           onMouseEnter={() => setHoverRating(star)}
                           onMouseLeave={() => setHoverRating(0)}
                           onClick={() => setRating(star)}
-                          title={`${star} star${star > 1 ? 's' : ''}`}
+                          aria-label={`${star} star${star > 1 ? 's' : ''}`}
                         >
                           ★
                         </button>
@@ -231,40 +234,15 @@ export const Testimonials: React.FC = () => {
                     />
                   </div>
 
-                  {/* Company / Project */}
-                  <div className="form-group">
-                    <label htmlFor="fb-company" className="form-label">Company / Project Name *</label>
-                    <input
-                      type="text"
-                      id="fb-company"
-                      name="company"
-                      required
-                      placeholder="e.g. Acme Tech or Sports Club"
-                      className="form-input"
-                    />
-                  </div>
-
-                  {/* Role */}
-                  <div className="form-group">
-                    <label htmlFor="fb-role" className="form-label">Your Role / Title (Optional)</label>
-                    <input
-                      type="text"
-                      id="fb-role"
-                      name="role"
-                      placeholder="e.g. Managing Director, Founder, or Manager"
-                      className="form-input"
-                    />
-                  </div>
-
                   {/* Feedback Content */}
                   <div className="form-group">
-                    <label htmlFor="fb-content" className="form-label">Your Feedback / Review *</label>
+                    <label htmlFor="fb-content" className="form-label">Your Feedback *</label>
                     <textarea
                       id="fb-content"
                       name="content"
                       required
                       rows={4}
-                      placeholder="Share your thoughts on the quality of work, delivery speed, and communication..."
+                      placeholder="Tell us about your experience working with Village Coders..."
                       className="form-textarea"
                     ></textarea>
                   </div>
@@ -272,7 +250,7 @@ export const Testimonials: React.FC = () => {
                   <div className="modal-actions">
                     <button
                       type="button"
-                      className="btn btn-secondary"
+                      className="btn-modal-cancel"
                       onClick={resetModal}
                     >
                       Cancel
@@ -280,7 +258,7 @@ export const Testimonials: React.FC = () => {
                     <button
                       type="submit"
                       disabled={isPending}
-                      className="btn btn-primary"
+                      className="btn btn-primary btn-modal-submit"
                     >
                       {isPending ? 'Submitting...' : 'Submit Feedback'}
                     </button>
@@ -297,6 +275,7 @@ export const Testimonials: React.FC = () => {
           background: #f8fafc;
           position: relative;
           clear: both;
+          padding-bottom: 90px;
         }
 
         .testimonials-grid {
@@ -463,13 +442,13 @@ export const Testimonials: React.FC = () => {
           box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
         }
 
-        /* Feedback Modal */
+        /* Modal Styles */
         .modal-backdrop {
           position: fixed;
           inset: 0;
-          background: rgba(15, 23, 42, 0.6);
-          backdrop-filter: blur(6px);
-          z-index: 250;
+          background: rgba(15, 23, 42, 0.65);
+          backdrop-filter: blur(8px);
+          z-index: 999;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -478,14 +457,15 @@ export const Testimonials: React.FC = () => {
 
         .modal-card {
           background: #ffffff;
-          max-width: 540px;
+          max-width: 480px;
           width: 100%;
-          border-radius: var(--radius-lg);
+          border-radius: 16px;
           border: 1px solid var(--border-subtle);
-          box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
-          padding: 32px;
+          box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.25);
+          padding: 28px 28px 24px;
           max-height: 90vh;
           overflow-y: auto;
+          position: relative;
         }
 
         .modal-header {
@@ -493,20 +473,23 @@ export const Testimonials: React.FC = () => {
           align-items: flex-start;
           justify-content: space-between;
           padding-bottom: 16px;
-          border-bottom: 1px solid var(--border-subtle);
+          border-bottom: 1px solid #f1f5f9;
           margin-bottom: 20px;
         }
 
         .modal-title {
-          font-size: 1.35rem;
+          font-size: 1.3rem;
           font-weight: 800;
           color: var(--text-primary);
+          line-height: 1.25;
+          margin: 0;
         }
 
         .modal-subtitle {
           font-size: 0.85rem;
           color: var(--text-secondary);
           margin-top: 4px;
+          margin-bottom: 0;
         }
 
         .modal-close-btn {
@@ -520,6 +503,14 @@ export const Testimonials: React.FC = () => {
           align-items: center;
           justify-content: center;
           font-size: 0.95rem;
+          color: #64748b;
+          transition: background 0.2s ease, color 0.2s ease;
+          flex-shrink: 0;
+          margin-left: 12px;
+        }
+
+        .modal-close-btn:hover {
+          background: #e2e8f0;
           color: #0f172a;
         }
 
@@ -541,7 +532,7 @@ export const Testimonials: React.FC = () => {
         .rating-select-group {
           display: flex;
           flex-direction: column;
-          gap: 8px;
+          gap: 6px;
         }
 
         .star-picker {
@@ -553,19 +544,20 @@ export const Testimonials: React.FC = () => {
         .star-pick-btn {
           background: none;
           border: none;
-          font-size: 1.7rem;
-          color: #cbd5e1;
+          font-size: 1.9rem;
+          color: #e2e8f0;
           cursor: pointer;
           transition: transform 0.15s ease, color 0.15s ease;
-          padding: 0 2px;
+          padding: 0 3px;
+          line-height: 1;
         }
 
         .star-pick-btn:hover {
-          transform: scale(1.2);
+          transform: scale(1.15);
         }
 
         .star-pick-btn.active {
-          color: var(--brand-amber);
+          color: #f59e0b;
         }
 
         .rating-score-label {
@@ -611,7 +603,32 @@ export const Testimonials: React.FC = () => {
           align-items: center;
           justify-content: flex-end;
           gap: 12px;
-          margin-top: 8px;
+          margin-top: 6px;
+          padding-top: 14px;
+          border-top: 1px solid #f1f5f9;
+        }
+
+        .btn-modal-cancel {
+          padding: 10px 18px;
+          background: #f1f5f9;
+          color: var(--text-secondary);
+          border: 1px solid var(--border-subtle);
+          border-radius: var(--radius-md);
+          font-size: 0.9rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background 0.2s ease;
+        }
+
+        .btn-modal-cancel:hover {
+          background: #e2e8f0;
+          color: var(--text-primary);
+        }
+
+        .btn-modal-submit {
+          padding: 10px 22px;
+          font-size: 0.9rem;
+          font-weight: 700;
         }
 
         .modal-success {
