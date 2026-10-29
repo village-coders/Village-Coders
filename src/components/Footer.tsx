@@ -45,11 +45,12 @@ export const Footer: React.FC = () => {
           <div className="footer-column">
             <h4 className="footer-title">Navigation</h4>
             <ul className="footer-links">
-              <li><Link href="#services">Specialized Services</Link></li>
-              <li><Link href="#portfolio">Featured Case Studies</Link></li>
-              <li><Link href="#testimonials">Client Endorsements</Link></li>
-              <li><Link href="#faq">Technical FAQ</Link></li>
-              <li><Link href="#contact">Start a Project</Link></li>
+              <li><Link href="/about">About Us</Link></li>
+              <li><Link href="/#services">Specialized Services</Link></li>
+              <li><Link href="/#portfolio">Featured Case Studies</Link></li>
+              <li><Link href="/#testimonials">Client Endorsements</Link></li>
+              <li><Link href="/#faq">Technical FAQ</Link></li>
+              <li><Link href="/contact">Contact Us</Link></li>
             </ul>
           </div>
 
@@ -57,12 +58,12 @@ export const Footer: React.FC = () => {
           <div className="footer-column">
             <h4 className="footer-title">Engineering</h4>
             <ul className="footer-links">
-              <li><Link href="#services">Custom Web Platforms</Link></li>
-              <li><Link href="#services">Enterprise SaaS & APIs</Link></li>
-              <li><Link href="#services">React Native & Mobile</Link></li>
-              <li><Link href="#services">Cloud DevOps & Terraform</Link></li>
-              <li><Link href="#services">Cybersecurity Auditing</Link></li>
-              <li><Link href="#services">UI/UX Design Systems</Link></li>
+              <li><Link href="/#services">Custom Web Platforms</Link></li>
+              <li><Link href="/#services">Enterprise SaaS & APIs</Link></li>
+              <li><Link href="/#services">React Native & Mobile</Link></li>
+              <li><Link href="/#services">Cloud DevOps & Terraform</Link></li>
+              <li><Link href="/#services">Cybersecurity Auditing</Link></li>
+              <li><Link href="/#services">UI/UX Design Systems</Link></li>
             </ul>
           </div>
 

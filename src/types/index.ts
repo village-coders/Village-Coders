@@ -26,19 +26,6 @@ export interface ProjectCaseStudy {
   liveUrl?: string;
 }
 
-export interface TeamMember {
-  id: string;
-  name: string;
-  role: string;
-  specialty: string;
-  experience: string;
-  bio: string;
-  skills: string[];
-  github?: string;
-  linkedin?: string;
-  avatarSeed: string;
-}
-
 export interface Testimonial {
   id: string;
   author: string;

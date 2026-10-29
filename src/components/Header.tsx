@@ -47,10 +47,11 @@ export const Header: React.FC = () => {
 
         {/* Desktop Navigation */}
         <nav className="desktop-nav" aria-label="Main Navigation">
-          <Link href="#services" className="nav-link">Services</Link>
-          <Link href="#portfolio" className="nav-link">Work</Link>
-          <Link href="#faq" className="nav-link">FAQ</Link>
-          <Link href="#contact" className="nav-link">Contact</Link>
+          <Link href="/about" className="nav-link">About Us</Link>
+          <Link href="/#services" className="nav-link">Services</Link>
+          <Link href="/#portfolio" className="nav-link">Work</Link>
+          <Link href="/#faq" className="nav-link">FAQ</Link>
+          <Link href="/contact" className="nav-link">Contact</Link>
         </nav>
 
         {/* Right CTA & Status */}
@@ -70,7 +71,7 @@ export const Header: React.FC = () => {
             whileTap={{ scale: 0.96 }}
             style={{ display: 'inline-flex' }}
           >
-            <Link href="#contact" className="btn btn-primary nav-cta">
+            <Link href="/contact" className="btn btn-primary nav-cta">
               <span>Start a Project</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -130,10 +131,11 @@ export const Header: React.FC = () => {
 
                 <nav className="mobile-nav">
                   {[
-                    { href: '#services', num: '01', label: 'Our Services' },
-                    { href: '#portfolio', num: '02', label: 'Case Studies & Work' },
-                    { href: '#faq', num: '03', label: 'FAQ' },
-                    { href: '#contact', num: '04', label: 'Get In Touch' }
+                    { href: '/about', num: '01', label: 'About Us' },
+                    { href: '/#services', num: '02', label: 'Our Services' },
+                    { href: '/#portfolio', num: '03', label: 'Case Studies & Work' },
+                    { href: '/#faq', num: '04', label: 'FAQ' },
+                    { href: '/contact', num: '05', label: 'Contact Us' }
                   ].map((item, idx) => (
                     <motion.div
                       key={idx}
@@ -155,7 +157,7 @@ export const Header: React.FC = () => {
                     <span>Currently accepting Q4/Q1 engineering contracts</span>
                   </div>
                   <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
-                    <Link href="#contact" onClick={closeMobileMenu} className="btn btn-primary w-full">
+                    <Link href="/contact" onClick={closeMobileMenu} className="btn btn-primary w-full">
                       Book Technical Consultation
                     </Link>
                   </motion.div>
